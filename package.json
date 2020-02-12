@@ -1,6 +1,7 @@
 {
   "name": "movie-app",
   "version": "0.1.0",
+  "description": "Find your new movie",
   "private": true,
   "homepage": "https://movie-app3.herokuapp.com",
   "dependencies": {
