@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from "react";
 
-const App = () => (
-	<div>Movie App</div>
-);
+class App extends Component {
+  render() {
+    return <div>Movie App</div>;
+  }
+}
 
 export default App;
