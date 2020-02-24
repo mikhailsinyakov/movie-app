@@ -22,7 +22,6 @@ describe("getMoviesList", () => {
     expect(movie).toHaveProperty("poster_src");
     expect(movie).toHaveProperty("genres");
     expect(movie.genres).toBeInstanceOf(Array);
-    expect(typeof movie.genres[0]).toBe("string");
   });
 
   it("movies in russian's random element is an object and it has necessary properties", () => {
@@ -34,7 +33,6 @@ describe("getMoviesList", () => {
     expect(movie).toHaveProperty("poster_src");
     expect(movie).toHaveProperty("genres");
     expect(movie.genres).toBeInstanceOf(Array);
-    expect(typeof movie.genres[0]).toBe("string");
   });
 });
 
@@ -56,7 +54,6 @@ describe("getMovieDetails", () => {
     expect(movie).toHaveProperty("poster_src");
     expect(movie).toHaveProperty("genres");
     expect(movie.genres).toBeInstanceOf(Array);
-    expect(typeof movie.genres[0]).toBe("string");
     expect(movie).toHaveProperty("original_title");
     expect(movie).toHaveProperty("overview");
     expect(movie).toHaveProperty("budget");
@@ -65,7 +62,6 @@ describe("getMovieDetails", () => {
     expect(movie).toHaveProperty("runtime");
     expect(movie).toHaveProperty("production_countries");
     expect(movie.production_countries).toBeInstanceOf(Array);
-    expect(typeof movie.production_countries[0]).toBe("string");
   });
 
   it("movie in russian is an object and it has all the necessary properties", () => {
@@ -76,7 +72,6 @@ describe("getMovieDetails", () => {
     expect(movieRu).toHaveProperty("poster_src");
     expect(movieRu).toHaveProperty("genres");
     expect(movieRu.genres).toBeInstanceOf(Array);
-    expect(typeof movieRu.genres[0]).toBe("string");
     expect(movieRu).toHaveProperty("original_title");
     expect(movieRu).toHaveProperty("overview");
     expect(movieRu).toHaveProperty("budget");
@@ -85,6 +80,5 @@ describe("getMovieDetails", () => {
     expect(movieRu).toHaveProperty("runtime");
     expect(movieRu).toHaveProperty("production_countries");
     expect(movieRu.production_countries).toBeInstanceOf(Array);
-    expect(typeof movieRu.production_countries[0]).toBe("string");
   });
 });
