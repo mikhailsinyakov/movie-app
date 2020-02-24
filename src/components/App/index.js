@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class App extends Component {
-  render() {
-    return <div>Movie App</div>;
-  }
-}
+const App = () => {
+  return <div></div>;
+};
 
 export default App;
