@@ -22,6 +22,10 @@ const RootWithLanguage = withLanguage(RootComponent);
 const testRenderer = Renderer.create(<RootWithLanguage />);
 const testInstance = testRenderer.root;
 
+it("matches snapshot", () => {
+  expect(testRenderer.toJSON()).toMatchSnapshot();
+});
+
 it("Child component has language and setLanguage props", () => {
   expect(testInstance.findByType(ChildComponent).props).toHaveProperty(
     "language"
