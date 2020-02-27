@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<select
+  onChange={[Function]}
+  value="value1"
+>
+  <option
+    value="value1"
+  >
+    name1
+  </option>
+  <option
+    value="value2"
+  >
+    name2
+  </option>
+</select>
+`;

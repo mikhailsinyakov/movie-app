@@ -1,23 +1,24 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Logo from "./Logo";
 import { withLanguageContext } from "../Language";
+import Select from "../../shared/Select";
 
 const Header = ({ language, setLanguage, getUIText }) => {
-  const [value, setValue] = useState(language);
-  const handleChange = e => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    if (language !== newValue) setLanguage(newValue);
-  };
+  const languageOptions = [
+    { value: "en", name: "EN" },
+    { value: "ru", name: "RU" }
+  ];
 
   return (
     <header>
-      <h1>{getUIText("appName")}</h1>
-      <select value={value} onChange={handleChange}>
-        <option value="en">EN</option>
-        <option value="ru">RU</option>
-      </select>
       <Logo filename="app-logo" href="/" />
+      <h1>{getUIText("appName")}</h1>
+      <Select
+        options={languageOptions}
+        initValue={language}
+        handleChange={setLanguage}
+      />
       <Logo
         filename="tmdb-logo"
         href="https://www.themoviedb.org/"
@@ -25,6 +26,12 @@ const Header = ({ language, setLanguage, getUIText }) => {
       />
     </header>
   );
+};
+
+Header.propTypes = {
+  language: PropTypes.string.isRequired,
+  setLanguage: PropTypes.func.isRequired,
+  getUIText: PropTypes.func.isRequired
 };
 
 export default withLanguageContext(Header);
