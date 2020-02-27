@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <footer>
+    <a
+      href="https://github.com/mikhailsinyakov"
+    >
+      Github
+    </a>
+    <span>
+      This product uses the TMDb API but is not endorsed or certified by TMDb
+    </span>
+  </footer>
+</div>
+`;
