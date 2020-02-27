@@ -1,6 +1,6 @@
 import React from "react";
 import Renderer from "react-test-renderer";
-import { screen, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import Select from "../../shared/Select";
 
 const options = [
@@ -10,12 +10,11 @@ const options = [
 
 const initValue = "value1";
 
-const testRenderer = Renderer.create(
-  <Select options={options} initValue={initValue} handleChange={() => {}} />
-);
-
 it("matches snapshot", () => {
-  expect(testRenderer.toJSON()).toMatchSnapshot();
+  const component = Renderer.create(
+    <Select options={options} initValue={initValue} handleChange={() => {}} />
+  );
+  expect(component.toJSON()).toMatchSnapshot();
 });
 
 it("call handleChange function when clicking on different option", () => {

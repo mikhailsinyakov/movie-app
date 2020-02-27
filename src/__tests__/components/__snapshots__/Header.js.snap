@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <header>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="app-logo"
+        src="img/app-logo"
+      />
+    </a>
+    <h1>
+      Movie App
+    </h1>
+    <select
+      onChange={[Function]}
+      value="en"
+    >
+      <option
+        value="en"
+      >
+        EN
+      </option>
+      <option
+        value="ru"
+      >
+        RU
+      </option>
+    </select>
+    <a
+      href="https://www.themoviedb.org/"
+    >
+      <img
+        alt="tmdb-logo"
+        src="img/tmdb-logo"
+      />
+    </a>
+  </header>
+</div>
+`;
