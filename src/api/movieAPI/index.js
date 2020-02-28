@@ -25,11 +25,14 @@ export const getMoviesList = async ({ language = "en", page = 1 } = {}) => {
     }
   });
 
-  return response.data.results.map(movie => ({
-    ...movie,
-    genres: movie.genre_ids.map(genreId => config.genres[language][genreId]),
-    poster_src: movie.poster_path && getPosterSrc(config, movie.poster_path)
-  }));
+  return {
+    ...response.data,
+    results: response.data.results.map(movie => ({
+      ...movie,
+      genres: movie.genre_ids.map(genreId => config.genres[language][genreId]),
+      poster_src: movie.poster_path && getPosterSrc(config, movie.poster_path)
+    }))
+  };
 };
 
 export const getMovieDetails = async ({ language, movieId }) => {

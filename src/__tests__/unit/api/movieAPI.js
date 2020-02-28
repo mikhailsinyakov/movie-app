@@ -1,10 +1,12 @@
 import { getMoviesList, getMovieDetails } from "../../../api/movieAPI";
 
-let movies, moviesRu;
+let moviesData, moviesDataRu, movies, moviesRu;
 
 beforeAll(async () => {
-  movies = await getMoviesList();
-  moviesRu = await getMoviesList({ language: "ru" });
+  moviesData = await getMoviesList();
+  moviesDataRu = await getMoviesList({ language: "ru" });
+  movies = moviesData.results;
+  moviesRu = moviesDataRu.results;
 });
 
 describe("getMoviesList", () => {
@@ -15,6 +17,8 @@ describe("getMoviesList", () => {
 
   it("movies's random element is an object and it has necessary properties", () => {
     const movie = movies[Math.floor(Math.random() * movies.length)];
+    expect(typeof moviesData.page).toBe("number");
+    expect(typeof moviesData.total_pages).toBe("number");
     expect(movie).toBeInstanceOf(Object);
     expect(movie).toHaveProperty("id");
     expect(movie).toHaveProperty("title");
@@ -26,6 +30,8 @@ describe("getMoviesList", () => {
 
   it("movies in russian's random element is an object and it has necessary properties", () => {
     const movie = moviesRu[Math.floor(Math.random() * moviesRu.length)];
+    expect(typeof moviesDataRu.page).toBe("number");
+    expect(typeof moviesDataRu.total_pages).toBe("number");
     expect(movie).toBeInstanceOf(Object);
     expect(movie).toHaveProperty("id");
     expect(movie).toHaveProperty("title");
