@@ -28,7 +28,7 @@ export const getMoviesList = async ({ language = "en", page = 1 } = {}) => {
   return response.data.results.map(movie => ({
     ...movie,
     genres: movie.genre_ids.map(genreId => config.genres[language][genreId]),
-    poster_src: getPosterSrc(config, movie.poster_path)
+    poster_src: movie.poster_path && getPosterSrc(config, movie.poster_path)
   }));
 };
 
@@ -46,7 +46,8 @@ export const getMovieDetails = async ({ language, movieId }) => {
   return {
     ...movieData,
     genres: movieData.genres.map(genre => genre.name),
-    poster_src: getPosterSrc(config, movieData.poster_path),
+    poster_src:
+      movieData.poster_path && getPosterSrc(config, movieData.poster_path),
     production_countries: movieData.production_countries.map(
       contry => contry.name
     )
