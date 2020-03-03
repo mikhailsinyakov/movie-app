@@ -1,5 +1,5 @@
 import React from "react";
-import Renderer from "react-test-renderer";
+import { create } from "react-test-renderer";
 import { fireEvent, render } from "@testing-library/react";
 import Select from "../../shared/Select";
 
@@ -11,7 +11,7 @@ const options = [
 const initValue = "value1";
 
 it("matches snapshot", () => {
-  const component = Renderer.create(
+  const component = create(
     <Select options={options} initValue={initValue} handleChange={() => {}} />
   );
   expect(component.toJSON()).toMatchSnapshot();

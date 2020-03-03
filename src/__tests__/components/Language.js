@@ -18,17 +18,18 @@ const RootComponent = () => {
 
 const RootWithLanguage = withLanguage(RootComponent);
 
-let component, instance;
-beforeAll(() => {
-  component = create(<RootWithLanguage />);
-  instance = component.root;
-});
+const renderComponent = () => {
+  const component = create(<RootWithLanguage />);
+  return { component, instance: component.root };
+};
 
 it("matches snapshot", () => {
+  const { component } = renderComponent();
   expect(component.toJSON()).toMatchSnapshot();
 });
 
 it("Child component has language and setLanguage props", () => {
+  const { instance } = renderComponent();
   expect(instance.findByType(ChildComponent).props).toHaveProperty("language");
 
   expect(instance.findByType(ChildComponent).props).toHaveProperty(
@@ -37,12 +38,14 @@ it("Child component has language and setLanguage props", () => {
 });
 
 it("language should be 'ru' after calling setLanguage('ru')", () => {
+  const { instance } = renderComponent();
   act(() => instance.findByType(ChildComponent).props.setLanguage("ru"));
   expect(instance.findByType(ChildComponent).props.language).toBe("ru");
   expect(localStorage.getItem("language")).toBe("ru");
 });
 
 it("language should be 'en' after calling setLanguage('en')", () => {
+  const { instance } = renderComponent();
   act(() => instance.findByType(ChildComponent).props.setLanguage("en"));
   expect(instance.findByType(ChildComponent).props.language).toBe("en");
   expect(localStorage.getItem("language")).toBe("en");
