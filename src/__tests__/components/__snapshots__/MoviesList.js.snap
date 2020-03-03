@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div>
+    <div>
+      <img
+        alt="Fight club"
+        src="poster.jpg"
+      />
+      <div>
+        <p>
+          Fight club
+          <span>
+            8.9
+          </span>
+        </p>
+        <p>
+          <span>
+            Action
+          </span>
+          <span>
+            Drama
+          </span>
+        </p>
+      </div>
+    </div>
+    <div>
+      <img
+        alt="Amiley"
+        src="poster2.jpg"
+      />
+      <div>
+        <p>
+          Amiley
+          <span>
+            7.5
+          </span>
+        </p>
+        <p>
+          <span>
+            Drama
+          </span>
+        </p>
+      </div>
+    </div>
+    <div>
+      <img
+        alt="Armageddon"
+        src="poster3.jpg"
+      />
+      <div>
+        <p>
+          Armageddon
+          <span>
+            8.4
+          </span>
+        </p>
+        <p>
+          <span>
+            Action
+          </span>
+        </p>
+      </div>
+    </div>
+    <button
+      onClick={[MockFunction]}
+    >
+      More
+    </button>
+  </div>
+</div>
+`;
