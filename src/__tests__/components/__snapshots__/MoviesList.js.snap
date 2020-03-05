@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <div>
-  <div>
+  <main>
     <div>
       <img
         alt="Fight club"
@@ -68,6 +68,6 @@ exports[`matches snapshot 1`] = `
     >
       More
     </button>
-  </div>
+  </main>
 </div>
 `;

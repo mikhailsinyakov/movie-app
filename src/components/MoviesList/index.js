@@ -9,7 +9,7 @@ const MoviesList = ({ getUIText, moviesData, getMoreMovies }) => {
   const { list, loading, completed } = moviesData;
 
   return (
-    <div>
+    <main>
       {list.map(movie => (
         <MovieOverview key={movie.id} movie={movie} />
       ))}
@@ -18,7 +18,7 @@ const MoviesList = ({ getUIText, moviesData, getMoreMovies }) => {
       ) : !completed ? (
         <Button onClick={getMoreMovies}>{getUIText("more")}</Button>
       ) : null}
-    </div>
+    </main>
   );
 };
 
