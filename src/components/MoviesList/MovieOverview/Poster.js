@@ -4,8 +4,10 @@ import styled from "styled-components";
 
 const Poster = ({ source, title, className }) => (
   <img
-    src={source || "img/poster-placeholder.png"}
+    src="img/poster-placeholder.png"
     alt={title}
+    onError={e => (e.target.src = "img/poster-placeholder.png")}
+    onLoad={e => source && e.target.src !== source && (e.target.src = source)}
     className={className}
   />
 );
