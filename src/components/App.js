@@ -10,7 +10,7 @@ const App = ({ language }) => {
 
   const [moviesData, setMoviesData] = useState({
     page: 0,
-    total_pages: 1,
+    total_pages: 0,
     results: []
   });
 

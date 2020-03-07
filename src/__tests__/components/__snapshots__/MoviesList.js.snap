@@ -2,72 +2,120 @@
 
 exports[`matches snapshot 1`] = `
 <div>
-  <main>
-    <div>
-      <img
-        alt="Fight club"
-        src="poster.jpg"
-      />
-      <div>
-        <p>
-          Fight club
-          <span>
-            8.9
-          </span>
-        </p>
-        <p>
-          <span>
-            Action
-          </span>
-          <span>
-            Drama
-          </span>
-        </p>
+  <div
+    className="sc-fzozJi jdGAsj"
+  >
+    <div
+      className="sc-fzoLsD gpRNJQ"
+    >
+      <div
+        className="sc-AxheI jtBcQl"
+      >
+        <img
+          alt="Fight club"
+          className="sc-AxjAm VhNEd"
+          src="poster.jpg"
+        />
+        <div
+          className="sc-AxgMl hRUoPs"
+        >
+          <p
+            className="sc-AxirZ boMDGJ"
+          >
+            Fight club
+            <span
+              className="sc-AxiKw gPrFwh"
+            >
+              8.9
+            </span>
+          </p>
+          <p
+            className="sc-AxhCb bABa-DE"
+          >
+            <span
+              className="sc-AxhUy gIsbuI"
+            >
+              Action
+            </span>
+            <span
+              className="sc-AxhUy gIsbuI"
+            >
+              Drama
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <img
-        alt="Amiley"
-        src="poster2.jpg"
-      />
-      <div>
-        <p>
-          Amiley
-          <span>
-            7.5
-          </span>
-        </p>
-        <p>
-          <span>
-            Drama
-          </span>
-        </p>
+      <div
+        className="sc-AxheI jtBcQl"
+      >
+        <img
+          alt="Amiley"
+          className="sc-AxjAm VhNEd"
+          src="poster2.jpg"
+        />
+        <div
+          className="sc-AxgMl hRUoPs"
+        >
+          <p
+            className="sc-AxirZ boMDGJ"
+          >
+            Amiley
+            <span
+              className="sc-AxiKw gPrFwh"
+            >
+              7.5
+            </span>
+          </p>
+          <p
+            className="sc-AxhCb bABa-DE"
+          >
+            <span
+              className="sc-AxhUy gIsbuI"
+            >
+              Drama
+            </span>
+          </p>
+        </div>
       </div>
-    </div>
-    <div>
-      <img
-        alt="Armageddon"
-        src="poster3.jpg"
-      />
-      <div>
-        <p>
-          Armageddon
-          <span>
-            8.4
-          </span>
-        </p>
-        <p>
-          <span>
-            Action
-          </span>
-        </p>
+      <div
+        className="sc-AxheI jtBcQl"
+      >
+        <img
+          alt="Armageddon"
+          className="sc-AxjAm VhNEd"
+          src="poster3.jpg"
+        />
+        <div
+          className="sc-AxgMl hRUoPs"
+        >
+          <p
+            className="sc-AxirZ boMDGJ"
+          >
+            Armageddon
+            <span
+              className="sc-AxiKw gPrFwh"
+            >
+              8.4
+            </span>
+          </p>
+          <p
+            className="sc-AxhCb bABa-DE"
+          >
+            <span
+              className="sc-AxhUy gIsbuI"
+            >
+              Action
+            </span>
+          </p>
+        </div>
       </div>
     </div>
     <button
+      className="sc-Axmtr knRKBY"
       onClick={[MockFunction]}
     >
       More
     </button>
-  </main>
+  </div>
 </div>
 `;

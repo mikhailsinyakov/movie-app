@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
+
+:root {
+  --header-height: 70px;
+  --poster-width: 200px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(/img/background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  font-family: "PT Sans", sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

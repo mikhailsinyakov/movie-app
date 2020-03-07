@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-const Button = ({ onClick, children }) => (
-  <button onClick={onClick}>{children}</button>
+const Button = ({ onClick, children, className }) => (
+  <button onClick={onClick} className={className}>
+    {children}
+  </button>
 );
 
 Button.propTypes = {
@@ -10,4 +13,16 @@ Button.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-export default Button;
+const StyledButton = styled(Button)`
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: azure;
+
+  &:hover {
+    background-color: #ccccc8;
+  }
+`;
+
+export default StyledButton;

@@ -2,56 +2,68 @@
 
 exports[`Snapshot matches snapshot 1`] = `
 <div>
-  <header>
+  <header
+    className="sc-AxhCb hKLhMx"
+  >
     <a
+      className="sc-AxjAm eGEFpi"
       href="/"
       onClick={[Function]}
     >
       <img
         alt="app-logo"
-        src="img/app-logo"
+        className="sc-AxirZ ggkxvc"
+        src="img/app-logo.svg"
       />
     </a>
-    <h1>
+    <h1
+      className="sc-AxiKw jstiRv"
+    >
       Movie App
     </h1>
-    <select
-      onChange={[Function]}
-      value="en"
-    >
-      <option
-        value="en"
-      >
-        EN
-      </option>
-      <option
-        value="ru"
-      >
-        RU
-      </option>
-    </select>
     <a
+      className="sc-AxjAm eGEFpi"
       href="https://www.themoviedb.org/"
     >
       <img
         alt="tmdb-logo"
-        src="img/tmdb-logo"
+        className="sc-AxirZ loYNGT"
+        src="img/tmdb-logo.png"
       />
     </a>
   </header>
   <main>
-    <button
-      onClick={[Function]}
+    <div
+      className="sc-AxgMl ddxDUv"
     >
-      More
-    </button>
+      <select
+        className="sc-AxhUy lbQkcW"
+        onChange={[Function]}
+        value="en"
+      >
+        <option
+          value="en"
+        >
+          EN
+        </option>
+        <option
+          value="ru"
+        >
+          RU
+        </option>
+      </select>
+    </div>
+    <div
+      className="sc-fznZeY vToFd"
+    >
+      <div
+        className="sc-fzokOt ihSkzj"
+      />
+    </div>
   </main>
-  <footer>
-    <a
-      href="https://github.com/mikhailsinyakov"
-    >
-      Github
-    </a>
+  <footer
+    className="sc-fzqBZW cGLgKv"
+  >
     <span>
       This product uses the TMDb API but is not endorsed or certified by TMDb
     </span>

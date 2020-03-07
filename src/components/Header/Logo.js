@@ -1,19 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const HyperLink = ({ children, href }) => {
-  if (href[0] === "/") return <Link to={href}>{children}</Link>;
-  else return <a href={href}>{children}</a>;
+const HyperLink = ({ children, href, className }) => {
+  if (href[0] === "/")
+    return (
+      <Link to={href} className={className}>
+        {children}
+      </Link>
+    );
+  else
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
 };
 
-const Logo = ({ filename, href, size = "medium" }) => {
+const StyledHyperLink = styled(HyperLink)`
+  height: var(--header-height);
+  width: var(--header-height);
+`;
+
+const Logo = ({ filename, href, size, className }) => {
   const logoSrc = `img/${filename}`;
   const [name] = filename.split(".");
   return (
-    <HyperLink href={href}>
-      <img src={logoSrc} alt={name} />
-    </HyperLink>
+    <StyledHyperLink href={href}>
+      <img src={logoSrc} alt={name} className={className} />
+    </StyledHyperLink>
   );
 };
 
@@ -23,4 +39,9 @@ Logo.propTypes = {
   size: PropTypes.string
 };
 
-export default Logo;
+const StyledLogo = styled(Logo)`
+  height: ${props => (props.size === "medium" ? "80%" : "50%")};
+  margin: ${props => (props.size === "medium" ? "10%" : "25%")};
+`;
+
+export default StyledLogo;

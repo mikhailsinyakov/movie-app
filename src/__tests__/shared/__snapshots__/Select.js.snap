@@ -2,6 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <select
+  className="sc-AxjAm gNuTVE"
   onChange={[Function]}
   value="value1"
 >

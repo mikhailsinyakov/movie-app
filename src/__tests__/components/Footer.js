@@ -23,10 +23,8 @@ it("matches snapshot", () => {
   expect(component.toJSON()).toMatchSnapshot();
 });
 
-it("has link and text", () => {
+it("has text", () => {
   const { instance } = renderComponent();
-  const link = instance.findByType("a");
   const text = instance.findByType("span");
-  expect(link).toBeTruthy();
   expect(text).toBeTruthy();
 });

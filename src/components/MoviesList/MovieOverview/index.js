@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { isNull } from "../../../helpers/customPropCheckers";
 import Poster from "./Poster";
 import Info from "./Info";
 
-const MovieOverview = ({ movie }) => (
-  <div>
+const MovieOverview = ({ movie, className }) => (
+  <div className={className}>
     <Poster source={movie.poster_src} title={movie.title} />
     <Info
       title={movie.title}
@@ -25,4 +26,13 @@ MovieOverview.propTypes = {
   })
 };
 
-export default MovieOverview;
+const StyledMovieOverview = styled(MovieOverview)`
+  width: var(--poster-width);
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: #442c2c;
+  color: #9a9a86;
+  height: fit-content;
+`;
+
+export default StyledMovieOverview;

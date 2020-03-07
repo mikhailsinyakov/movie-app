@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-const Select = ({ options, initValue, handleChange }) => {
+const Select = ({ options, initValue, handleChange, className }) => {
   const [value, setValue] = useState(initValue);
 
   const onChange = e => {
@@ -10,7 +11,7 @@ const Select = ({ options, initValue, handleChange }) => {
   };
 
   return (
-    <select value={value} onChange={onChange}>
+    <select value={value} onChange={onChange} className={className}>
       {options.map(({ value, name }) => (
         <option key={value} value={value}>
           {name}
@@ -31,4 +32,17 @@ Select.propTypes = {
   handleChange: PropTypes.func.isRequired
 };
 
-export default Select;
+const StyledSelect = styled(Select)`
+  background: #e6e6e8;
+  height: 30px;
+  border: 2px solid #739690;
+  border-radius: 0.4rem;
+  padding: 0 0.5rem;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export default StyledSelect;

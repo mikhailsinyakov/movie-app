@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Header from "../components/Header";
+import Settings from "../components/Settings";
 import MoviesList from "../components/MoviesList";
 import Footer from "../components/Footer";
 import { isNull } from "../helpers/customPropCheckers";
@@ -9,7 +10,10 @@ const Home = ({ moviesData, getMoreMovies }) => {
   return (
     <Fragment>
       <Header />
-      <MoviesList moviesData={moviesData} getMoreMovies={getMoreMovies} />
+      <main>
+        <Settings />
+        <MoviesList moviesData={moviesData} getMoreMovies={getMoreMovies} />
+      </main>
       <Footer />
     </Fragment>
   );

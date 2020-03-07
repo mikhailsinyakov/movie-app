@@ -2,12 +2,9 @@
 
 exports[`matches snapshot 1`] = `
 <div>
-  <footer>
-    <a
-      href="https://github.com/mikhailsinyakov"
-    >
-      Github
-    </a>
+  <footer
+    className="sc-AxjAm loOOkW"
+  >
     <span>
       This product uses the TMDb API but is not endorsed or certified by TMDb
     </span>
