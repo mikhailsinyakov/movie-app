@@ -5,6 +5,8 @@ import { getMoviesList } from "../api/movieAPI";
 import { withLanguageContext } from "./Language";
 import HomeScreen from "../screens/Home";
 
+const moviesDataCache = {};
+
 const App = ({ language }) => {
   const [loading, setLoading] = useState(false);
   const initialMoviesData = {
@@ -15,21 +17,27 @@ const App = ({ language }) => {
   const [moviesData, setMoviesData] = useState(initialMoviesData);
 
   const fetchMoviesData = (page = 1) => {
-    setLoading(true);
-    const { cancel, promise } = getMoviesList({ language, page });
-    (async () => {
-      try {
-        const newMoviesData = await promise;
-        setMoviesData({
-          ...newMoviesData,
-          results: [...moviesData.results, ...newMoviesData.results]
-        });
-        setLoading(false);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-    return () => cancel("Component has unmounted");
+    if (page === 1 && moviesDataCache[language]) {
+      setMoviesData(moviesDataCache[language]);
+    } else {
+      setLoading(true);
+      const { cancel, promise } = getMoviesList({ language, page });
+      (async () => {
+        try {
+          const newMoviesData = await promise;
+          const moviesDataToSave = {
+            ...newMoviesData,
+            results: [...moviesData.results, ...newMoviesData.results]
+          };
+          moviesDataCache[language] = moviesDataToSave;
+          setMoviesData(moviesDataToSave);
+          setLoading(false);
+        } catch (e) {
+          console.error(e);
+        }
+      })();
+      return () => cancel("Component has unmounted");
+    }
   };
 
   useEffect(fetchMoviesData, []);
