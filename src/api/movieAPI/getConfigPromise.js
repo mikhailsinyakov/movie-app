@@ -16,6 +16,10 @@ const getGenresObj = genresData =>
     {}
   );
 
+const definePosterSize = (posterSizes, width) => {
+  return posterSizes.find(size => +size.slice(1) >= width);
+};
+
 const getConfig = async () => {
   const urlParts = [
     { path: "/configuration" },
@@ -28,8 +32,7 @@ const getConfig = async () => {
         (await request({ url: path, params: { language } })).data
     )
   );
-  const posterSizes = configData.images.poster_sizes;
-  const posterSize = posterSizes[posterSizes.length - 1];
+  const posterSize = definePosterSize(configData.images.poster_sizes, 300);
 
   return {
     imageBaseUrl: configData.images.secure_base_url,
