@@ -7,29 +7,44 @@ import HomeScreen from "../screens/Home";
 
 const App = ({ language }) => {
   const [loading, setLoading] = useState(false);
-
-  const [moviesData, setMoviesData] = useState({
+  const initialMoviesData = {
     page: 0,
     total_pages: 0,
     results: []
-  });
+  };
+  const [moviesData, setMoviesData] = useState(initialMoviesData);
 
   const fetchMoviesData = (page = 1) => {
     setLoading(true);
     const { cancel, promise } = getMoviesList({ language, page });
-    promise
-      .then(newMoviesData => {
+    (async () => {
+      try {
+        const newMoviesData = await promise;
         setMoviesData({
           ...newMoviesData,
           results: [...moviesData.results, ...newMoviesData.results]
         });
         setLoading(false);
-      })
-      .catch(console.error);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
     return () => cancel("Component has unmounted");
   };
 
   useEffect(fetchMoviesData, []);
+
+  useEffect(() => {
+    setMoviesData(initialMoviesData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language]);
+
+  useEffect(() => {
+    if (!moviesData.results.length) {
+      fetchMoviesData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [moviesData]);
 
   return (
     <Router>
