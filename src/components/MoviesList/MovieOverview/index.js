@@ -33,6 +33,12 @@ const StyledMovieOverview = styled(MovieOverview)`
   background-color: #442c2c;
   color: #9a9a86;
   height: fit-content;
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: translateY(-1rem);
+  }
 `;
 
 export default StyledMovieOverview;
