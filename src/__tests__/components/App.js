@@ -95,13 +95,14 @@ describe("Movie page", () => {
   afterEach(() => component.unmount());
 
   it("renders movie details page when clicking on poster", async () => {
-    const { container, queryByText, getByAltText, debug } = component;
+    const { container, queryByText, getByAltText, queryByAltText } = component;
     if (queryByText(/loading/i)) {
       await waitForElementToBeRemoved(() => queryByText(/loading/i));
     }
     const firstPoster = container.querySelector("main img");
     const movieTitle = firstPoster.alt;
     fireEvent.click(firstPoster);
+    expect(queryByAltText(movieTitle)).toBeNull();
     await wait(() => expect(getByAltText(movieTitle)));
     expect(getByAltText(movieTitle)).toBeInTheDocument();
   });

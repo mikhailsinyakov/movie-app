@@ -2,6 +2,7 @@ import React from "react";
 import Renderer from "react-test-renderer";
 import { MemoryRouter as Router } from "react-router-dom";
 import { fireEvent, render } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 import withLanguage from "../../components/Language";
 import MoviesList from "../../components/MoviesList";
 
@@ -60,12 +61,12 @@ const renderComponent = moviesData =>
 describe("with loading = false and completed = false", () => {
   it("renders an element with 'More' text", () => {
     const { getByText } = renderComponent(moviesData);
-    expect(getByText("More")).toBeTruthy();
+    expect(getByText("More")).toBeInTheDocument();
   });
 
   it("renders no element with 'Loading' text", () => {
     const { queryByText } = renderComponent(moviesData);
-    expect(queryByText("Loading...")).toBeFalsy();
+    expect(queryByText("Loading...")).toBeNull();
   });
 
   it("renders 3 images", () => {
@@ -78,9 +79,9 @@ describe("with loading = false and completed = false", () => {
       moviesData
     );
     const movieInfo = moviesData.list[0];
-    expect(getByAltText(movieInfo.title)).toBeTruthy();
-    expect(getByText(movieInfo.title)).toBeTruthy();
-    expect(getByText(movieInfo.vote_average.toString())).toBeTruthy();
+    expect(getByAltText(movieInfo.title)).toBeInTheDocument();
+    expect(getByText(movieInfo.title)).toBeInTheDocument();
+    expect(getByText(movieInfo.vote_average.toString())).toBeInTheDocument();
     expect(getAllByText(movieInfo.genres[0])).toBeTruthy();
   });
 
@@ -99,12 +100,12 @@ describe("with loading = true and completed = false", () => {
 
   it("renders 'Loading...' text", () => {
     const { getByText } = renderComponent(moviesData);
-    expect(getByText("Loading...")).toBeTruthy();
+    expect(getByText("Loading...")).toBeInTheDocument();
   });
 
   it("renders no button with 'More' text", () => {
     const { queryByText } = renderComponent(moviesData);
-    expect(queryByText("More")).toBeFalsy();
+    expect(queryByText("More")).toBeNull();
   });
 });
 
@@ -116,11 +117,11 @@ describe("with loading = false and completed = true", () => {
 
   it("renders no element with 'Loading...' text", () => {
     const { queryByText } = renderComponent(moviesData);
-    expect(queryByText("Loading...")).toBeFalsy();
+    expect(queryByText("Loading...")).toBeNull();
   });
 
   it("renders no button with 'More' text", () => {
     const { queryByText } = renderComponent(moviesData);
-    expect(queryByText("More")).toBeFalsy();
+    expect(queryByText("More")).toBeNull();
   });
 });
