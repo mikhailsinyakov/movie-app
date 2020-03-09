@@ -1,20 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { isNull } from "../../../helpers/customPropCheckers";
-import Poster from "./Poster";
+import Poster from "../../../shared/Poster";
 import Info from "./Info";
 
-const MovieOverview = ({ movie, className }) => (
-  <div className={className}>
-    <Poster source={movie.poster_src} title={movie.title} />
-    <Info
-      title={movie.title}
-      rating={movie.vote_average}
-      genres={movie.genres}
-    />
-  </div>
-);
+const MovieOverview = ({ movie, className }) => {
+  const history = useHistory();
+  return (
+    <div
+      className={className}
+      onClick={() => history.push(`/movie/${movie.id}`)}
+    >
+      <Poster source={movie.poster_src} title={movie.title} />
+      <Info
+        title={movie.title}
+        rating={movie.vote_average}
+        genres={movie.genres}
+      />
+    </div>
+  );
+};
 
 MovieOverview.propTypes = {
   movie: PropTypes.shape({

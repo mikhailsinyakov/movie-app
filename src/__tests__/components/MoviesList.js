@@ -1,5 +1,6 @@
 import React from "react";
 import Renderer from "react-test-renderer";
+import { MemoryRouter as Router } from "react-router-dom";
 import { fireEvent, render } from "@testing-library/react";
 import withLanguage from "../../components/Language";
 import MoviesList from "../../components/MoviesList";
@@ -38,18 +39,22 @@ const getMoreMovies = jest.fn();
 
 it("matches snapshot", () => {
   const component = Renderer.create(
-    <ParentWithLanguage>
-      <MoviesList moviesData={moviesData} getMoreMovies={getMoreMovies} />
-    </ParentWithLanguage>
+    <Router>
+      <ParentWithLanguage>
+        <MoviesList moviesData={moviesData} getMoreMovies={getMoreMovies} />
+      </ParentWithLanguage>
+    </Router>
   );
   expect(component.toJSON()).toMatchSnapshot();
 });
 
 const renderComponent = moviesData =>
   render(
-    <ParentWithLanguage>
-      <MoviesList moviesData={moviesData} getMoreMovies={getMoreMovies} />
-    </ParentWithLanguage>
+    <Router>
+      <ParentWithLanguage>
+        <MoviesList moviesData={moviesData} getMoreMovies={getMoreMovies} />
+      </ParentWithLanguage>
+    </Router>
   );
 
 describe("with loading = false and completed = false", () => {

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot matches snapshot 1`] = `
+<div>
+  <div>
+    <div>
+      <img
+        alt="Dragonheart: Vengeance"
+        className="sc-AxjAm VhNEd"
+        onError={[Function]}
+        onLoad={[Function]}
+        src="img/poster-placeholder.png"
+      />
+      <div>
+        <span>
+          Budget
+          : $
+          1500
+        </span>
+        <span>
+          Revenue
+          : $
+          1000
+        </span>
+      </div>
+    </div>
+    <div>
+      <div>
+        <span>
+          Dragonheart: Vengeance
+           
+          (Dragonheart: Vengeance original)
+        </span>
+        <span>
+          6.0
+        </span>
+      </div>
+      <div>
+        <p>
+          Lukas, a young farmer whose family is killed by savage raiders in the countryside, sets out on an epic quest for revenge, forming an unlikely trio with a majestic dragon and a swashbuckling, sword-fighting mercenary, Darius.
+        </p>
+        <p>
+          Release year
+          : 
+          2020
+        </p>
+        <p>
+          Production
+          : 
+          United States of America
+        </p>
+        <p>
+          Runtime
+          : 
+          1:37
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

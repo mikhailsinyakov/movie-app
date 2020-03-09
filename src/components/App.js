@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { getMoviesList } from "../api/movieAPI";
 import { withLanguageContext } from "./Language";
 import HomeScreen from "../screens/Home";
+import MovieScreen from "../screens/Movie";
 
 const moviesDataCache = {};
 
@@ -49,7 +50,7 @@ const App = ({ language }) => {
 
   useEffect(() => {
     if (!moviesData.results.length) {
-      fetchMoviesData();
+      return fetchMoviesData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [moviesData]);
@@ -65,6 +66,9 @@ const App = ({ language }) => {
           }}
           getMoreMovies={() => fetchMoviesData(moviesData.page + 1)}
         />
+      </Route>
+      <Route path="/movie/:id">
+        <MovieScreen />
       </Route>
     </Router>
   );

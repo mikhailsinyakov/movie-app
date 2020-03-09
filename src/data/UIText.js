@@ -16,6 +16,26 @@ const data = {
   more: {
     en: "More",
     ru: "Ещё"
+  },
+  budget: {
+    en: "Budget",
+    ru: "Бюджет"
+  },
+  revenue: {
+    en: "Revenue",
+    ru: "Сборы"
+  },
+  release: {
+    en: "Release year",
+    ru: "Год выпуска"
+  },
+  production: {
+    en: "Production",
+    ru: "Производство"
+  },
+  runtime: {
+    en: "Runtime",
+    ru: "Продолжительность"
   }
 };
 

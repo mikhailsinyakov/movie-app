@@ -1,5 +1,6 @@
 import React from "react";
 import Renderer from "react-test-renderer";
+import { MemoryRouter as Router, Route } from "react-router-dom";
 import {
   fireEvent,
   render,
@@ -17,9 +18,11 @@ describe("Snapshot", () => {
   let component;
   beforeEach(() => {
     component = Renderer.create(
-      <ParentWithLanguage>
-        <App />
-      </ParentWithLanguage>
+      <Router>
+        <ParentWithLanguage>
+          <App />
+        </ParentWithLanguage>
+      </Router>
     );
   });
   afterEach(() => {
@@ -32,27 +35,37 @@ describe("Snapshot", () => {
 
 const renderComponent = () =>
   render(
-    <ParentWithLanguage>
-      <App />
-    </ParentWithLanguage>
+    <Router>
+      <ParentWithLanguage>
+        <App />
+      </ParentWithLanguage>
+    </Router>
   );
 
 describe("Home page", () => {
+  let component;
+  beforeEach(() => (component = renderComponent()));
+  afterEach(() => component.unmount());
+
   it("renders 'Loading...' text", () => {
-    const { getByText } = renderComponent();
+    const { getByText } = component;
     expect(getByText(/loading/i)).toBeInTheDocument();
   });
 
   it("renders 20 images and 'More' button after a while", async () => {
-    const { container, getByText } = renderComponent();
-    await waitForElementToBeRemoved(() => getByText(/loading/i));
+    const { container, queryByText, getByText } = component;
+    if (queryByText(/loading/i)) {
+      await waitForElementToBeRemoved(() => queryByText(/loading/i));
+    }
     expect(container.querySelectorAll("main img").length).toBe(20);
     expect(getByText(/more/i)).toBeInTheDocument();
   });
 
   it("renders 40 images after clicking 'More' button", async () => {
-    const { container, getByText } = renderComponent();
-    await waitForElementToBeRemoved(() => getByText(/loading/i));
+    const { container, queryByText, getByText } = component;
+    if (queryByText(/loading/i)) {
+      await waitForElementToBeRemoved(() => queryByText(/loading/i));
+    }
     fireEvent.click(getByText(/more/i));
     await wait(() => expect(getByText(/loading/i)));
     await waitForElementToBeRemoved(() => getByText(/loading/i));
@@ -60,9 +73,11 @@ describe("Home page", () => {
   });
 
   it("renders no 'More' button when has downloaded all movies", async () => {
-    const { getByText, queryByText } = renderComponent();
+    const { getByText, queryByText } = component;
+    if (queryByText(/loading/i)) {
+      await waitForElementToBeRemoved(() => queryByText(/loading/i));
+    }
     let moreButton;
-    await waitForElementToBeRemoved(() => getByText(/loading/i));
     moreButton = queryByText(/more/i);
     while (moreButton) {
       fireEvent.click(moreButton);
@@ -71,5 +86,23 @@ describe("Home page", () => {
       moreButton = queryByText(/more/i);
     }
     expect(moreButton).toBeNull();
+  });
+});
+
+describe("Movie page", () => {
+  let component;
+  beforeEach(() => (component = renderComponent()));
+  afterEach(() => component.unmount());
+
+  it("renders movie details page when clicking on poster", async () => {
+    const { container, queryByText, getByAltText, debug } = component;
+    if (queryByText(/loading/i)) {
+      await waitForElementToBeRemoved(() => queryByText(/loading/i));
+    }
+    const firstPoster = container.querySelector("main img");
+    const movieTitle = firstPoster.alt;
+    fireEvent.click(firstPoster);
+    await wait(() => expect(getByAltText(movieTitle)));
+    expect(getByAltText(movieTitle)).toBeInTheDocument();
   });
 });
