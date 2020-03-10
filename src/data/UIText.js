@@ -36,6 +36,10 @@ const data = {
   runtime: {
     en: "Runtime",
     ru: "Продолжительность"
+  },
+  rating: {
+    en: "Rating",
+    ru: "Рейтинг"
   }
 };
 

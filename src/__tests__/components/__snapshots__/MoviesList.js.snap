@@ -14,7 +14,7 @@ exports[`matches snapshot 1`] = `
       >
         <img
           alt="Fight club"
-          className="sc-AxjAm VhNEd"
+          className="sc-AxjAm bA-dMnp"
           onError={[Function]}
           onLoad={[Function]}
           src="img/poster-placeholder.png"
@@ -23,25 +23,25 @@ exports[`matches snapshot 1`] = `
           className="sc-AxgMl hRUoPs"
         >
           <p
-            className="sc-AxirZ boMDGJ"
+            className="sc-AxiKw bwJPhl"
           >
             Fight club
             <span
-              className="sc-AxiKw gPrFwh"
+              className="sc-AxirZ iqQIYt"
             >
               8.9
             </span>
           </p>
           <p
-            className="sc-AxhCb bABa-DE"
+            className="sc-AxhUy hnnGGV"
           >
             <span
-              className="sc-AxhUy gIsbuI"
+              className="sc-AxhCb iA-dFqF"
             >
               Action
             </span>
             <span
-              className="sc-AxhUy gIsbuI"
+              className="sc-AxhCb iA-dFqF"
             >
               Drama
             </span>
@@ -54,7 +54,7 @@ exports[`matches snapshot 1`] = `
       >
         <img
           alt="Amiley"
-          className="sc-AxjAm VhNEd"
+          className="sc-AxjAm bA-dMnp"
           onError={[Function]}
           onLoad={[Function]}
           src="img/poster-placeholder.png"
@@ -63,20 +63,20 @@ exports[`matches snapshot 1`] = `
           className="sc-AxgMl hRUoPs"
         >
           <p
-            className="sc-AxirZ boMDGJ"
+            className="sc-AxiKw bwJPhl"
           >
             Amiley
             <span
-              className="sc-AxiKw gPrFwh"
+              className="sc-AxirZ iqQIYt"
             >
               7.5
             </span>
           </p>
           <p
-            className="sc-AxhCb bABa-DE"
+            className="sc-AxhUy hnnGGV"
           >
             <span
-              className="sc-AxhUy gIsbuI"
+              className="sc-AxhCb iA-dFqF"
             >
               Drama
             </span>
@@ -89,7 +89,7 @@ exports[`matches snapshot 1`] = `
       >
         <img
           alt="Armageddon"
-          className="sc-AxjAm VhNEd"
+          className="sc-AxjAm bA-dMnp"
           onError={[Function]}
           onLoad={[Function]}
           src="img/poster-placeholder.png"
@@ -98,20 +98,20 @@ exports[`matches snapshot 1`] = `
           className="sc-AxgMl hRUoPs"
         >
           <p
-            className="sc-AxirZ boMDGJ"
+            className="sc-AxiKw bwJPhl"
           >
             Armageddon
             <span
-              className="sc-AxiKw gPrFwh"
+              className="sc-AxirZ iqQIYt"
             >
               8.4
             </span>
           </p>
           <p
-            className="sc-AxhCb bABa-DE"
+            className="sc-AxhUy hnnGGV"
           >
             <span
-              className="sc-AxhUy gIsbuI"
+              className="sc-AxhCb iA-dFqF"
             >
               Action
             </span>

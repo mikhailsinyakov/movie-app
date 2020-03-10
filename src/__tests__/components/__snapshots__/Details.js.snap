@@ -2,57 +2,142 @@
 
 exports[`Snapshot matches snapshot 1`] = `
 <div>
-  <div>
-    <div>
-      <img
-        alt="Dragonheart: Vengeance"
-        className="sc-AxjAm VhNEd"
-        onError={[Function]}
-        onLoad={[Function]}
-        src="img/poster-placeholder.png"
-      />
+  <div
+    className="sc-fzplWN iJnEoU"
+  >
+    <img
+      alt="Dragonheart: Vengeance"
+      className="sc-AxjAm sc-fzpans eqmmmZ"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="img/poster-placeholder.png"
+    />
+    <div
+      className="sc-fzoLsD gDwgRa"
+    >
+      <p
+        className="sc-AxiKw keojvp"
+      >
+        Dragonheart: Vengeance
+         
+        <span
+          className="sc-AxirZ jUXLfU"
+        >
+          (
+          Дракон
+          )
+        </span>
+      </p>
       <div>
-        <span>
-          Budget
-          : $
-          1500
-        </span>
-        <span>
-          Revenue
-          : $
-          1000
-        </span>
-      </div>
-    </div>
-    <div>
-      <div>
-        <span>
-          Dragonheart: Vengeance
-           
-          (Dragonheart: Vengeance original)
-        </span>
-        <span>
-          6.0
-        </span>
-      </div>
-      <div>
-        <p>
+        <p
+          className="sc-AxmLO dgSOwn"
+        >
           Lukas, a young farmer whose family is killed by savage raiders in the countryside, sets out on an epic quest for revenge, forming an unlikely trio with a majestic dragon and a swashbuckling, sword-fighting mercenary, Darius.
         </p>
-        <p>
-          Release year
-          : 
-          2020
+        <p
+          className="sc-AxhUy sc-fzozJi iWFcxS"
+        >
+          <span
+            className="sc-AxhCb iA-dFqF"
+          >
+            Fantasy
+          </span>
         </p>
-        <p>
-          Production
-          : 
-          United States of America
+        <p
+          className="sc-Axmtr clcwvu"
+        >
+          <span
+            className="sc-AxgMl kvVMrz"
+          >
+            Rating
+            : 
+          </span>
+           
+          <span
+            className="sc-AxheI fqiWrt"
+          >
+            6.0
+          </span>
         </p>
-        <p>
-          Runtime
-          : 
-          1:37
+        <p
+          className="sc-Axmtr clcwvu"
+        >
+          <span
+            className="sc-AxgMl kvVMrz"
+          >
+            Release year
+            : 
+          </span>
+           
+          <span
+            className="sc-AxheI fqiWrt"
+          >
+            2020
+          </span>
+        </p>
+        <p
+          className="sc-Axmtr clcwvu"
+        >
+          <span
+            className="sc-AxgMl kvVMrz"
+          >
+            Runtime
+            : 
+          </span>
+           
+          <span
+            className="sc-AxheI fqiWrt"
+          >
+            1:37
+          </span>
+        </p>
+        <p
+          className="sc-Axmtr dShpiR"
+        >
+          <span
+            className="sc-AxgMl kvVMrz"
+          >
+            Production
+            : 
+          </span>
+           
+          <span
+            className="sc-AxheI fqiWrt"
+          >
+            United States of America
+          </span>
+        </p>
+        <p
+          className="sc-Axmtr dShpiR"
+        >
+          <span
+            className="sc-AxgMl kvVMrz"
+          >
+            Budget
+            : 
+          </span>
+           
+          <span
+            className="sc-AxheI fqiWrt"
+          >
+            $15.0M
+          </span>
+        </p>
+        <p
+          className="sc-Axmtr dShpiR"
+        >
+          <span
+            className="sc-AxgMl kvVMrz"
+          >
+            Revenue
+            : 
+          </span>
+           
+          <span
+            className="sc-AxheI fqiWrt"
+          >
+            $10.0M
+          </span>
         </p>
       </div>
     </div>

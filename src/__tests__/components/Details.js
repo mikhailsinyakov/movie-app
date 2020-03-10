@@ -9,15 +9,15 @@ const Parent = ({ children }) => <div>{children}</div>;
 const ParentWithLanguage = withLanguage(Parent);
 
 const details = {
-  budget: 1500,
+  budget: 15000000,
   genres: ["Fantasy"],
-  original_title: "Dragonheart: Vengeance original",
+  original_title: "Дракон",
   overview:
     "Lukas, a young farmer whose family is killed by savage raiders in the countryside, sets out on an epic quest for revenge, forming an unlikely trio with a majestic dragon and a swashbuckling, sword-fighting mercenary, Darius.",
   poster_src: "https://image.tmdb.org/t/p/w342/qZ1KAgfdeNbzrNYKW4BIRHdEBJ9.jpg",
   production_countries: ["United States of America"],
   release_date: "2020-02-04",
-  revenue: 1000,
+  revenue: 10000000,
   runtime: 97,
   title: "Dragonheart: Vengeance",
   vote_average: 6
@@ -91,11 +91,13 @@ describe("Details", () => {
 
   it("renders budget", () => {
     const { getByText } = renderComponent();
-    expect(getByText(new RegExp(details.budget))).toBeInTheDocument();
+    const budget = (details.budget / 1000000).toFixed(1) + "M";
+    expect(getByText(new RegExp(budget))).toBeInTheDocument();
   });
 
   it("renders revenue", () => {
     const { getByText } = renderComponent();
-    expect(getByText(new RegExp(details.revenue))).toBeInTheDocument();
+    const revenue = (details.revenue / 1000000).toFixed(1) + "M";
+    expect(getByText(new RegExp(revenue))).toBeInTheDocument();
   });
 });
