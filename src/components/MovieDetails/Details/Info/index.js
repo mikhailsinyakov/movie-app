@@ -4,6 +4,13 @@ import styled from "styled-components";
 import Title from "./Title";
 import Description from "./Description";
 
+const formatTime = minOverall => {
+  const hours = Math.floor(minOverall / 60);
+  const minutes = (minOverall % 60).toString().padStart(2, "0");
+
+  return `${hours}:${minutes}`;
+};
+
 const Info = ({
   title,
   original_title,
@@ -24,7 +31,7 @@ const Info = ({
       genres={genres}
       rating={vote_average ? vote_average.toFixed(1) : null}
       release={+release_date.split("-")[0]}
-      runtime={runtime ? `${Math.floor(runtime / 60)}:${runtime % 60}` : ""}
+      runtime={runtime ? formatTime(runtime) : ""}
       production={
         production_countries.length ? production_countries.join(", ") : ""
       }
