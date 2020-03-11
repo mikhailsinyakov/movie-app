@@ -1,5 +1,5 @@
 import React from "react";
-import { stickLanguage } from "../../data/UIText";
+import { stickLanguage } from "data/UIText";
 
 export const LanguageContext = React.createContext();
 

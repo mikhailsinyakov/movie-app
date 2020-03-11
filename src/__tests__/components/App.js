@@ -9,7 +9,7 @@ import {
 } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import withLanguage from "../../components/Language";
-import App from "../../components/App";
+import App from "components/App";
 
 const Parent = ({ children }) => <div>{children}</div>;
 const ParentWithLanguage = withLanguage(Parent);

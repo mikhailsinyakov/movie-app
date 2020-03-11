@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withLanguageContext } from "../Language";
 import MovieOverview from "./MovieOverview";
-import Button from "../../shared/Button";
-import { isNull } from "../../helpers/customPropCheckers";
+import Button from "shared/Button";
+import { isNull } from "helpers/customPropCheckers";
 
 const Loading = styled.div`
   text-align: center;

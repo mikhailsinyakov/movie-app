@@ -3,8 +3,8 @@ import Renderer from "react-test-renderer";
 import { MemoryRouter as Router } from "react-router-dom";
 import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import withLanguage from "../../components/Language";
-import MoviesList from "../../components/MoviesList";
+import withLanguage from "components/Language";
+import MoviesList from "components/MoviesList";
 
 const Parent = ({ children }) => <div>{children}</div>;
 const ParentWithLanguage = withLanguage(Parent);

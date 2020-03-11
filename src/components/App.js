@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { getMoviesList } from "../api/movieAPI";
+import { getMoviesList } from "api/movieAPI";
 import { withLanguageContext } from "./Language";
-import HomeScreen from "../screens/Home";
-import MovieScreen from "../screens/Movie";
+import HomeScreen from "screens/Home";
+import MovieScreen from "screens/Movie";
 
 const moviesDataCache = {};
 

@@ -1,4 +1,4 @@
-import cache from "../../../cache";
+import cache from "cache";
 
 cache.set("movie", 15, "en", "some data");
 cache.set("movies", "latest", "ru", { key: "value" });

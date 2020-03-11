@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withLanguageContext } from "./Language";
-import Select from "./../shared/Select";
+import Select from "shared/Select";
 
 const Settings = ({ language, setLanguage, className }) => {
   const languageOptions = [

@@ -1,8 +1,8 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import { BrowserRouter as Router } from "react-router-dom";
-import withLanguage from "../../components/Language";
-import Footer from "../../components/Footer";
+import withLanguage from "components/Language";
+import Footer from "components/Footer";
 
 const Parent = ({ children }) => <div>{children}</div>;
 const ParentWithLanguage = withLanguage(Parent);

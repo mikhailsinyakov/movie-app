@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Genres from "../../../../shared/Genres";
+import Genres from "shared/Genres";
 import Item from "./Item";
 
 const Overview = styled.p`

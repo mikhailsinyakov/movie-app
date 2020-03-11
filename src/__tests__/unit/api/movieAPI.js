@@ -1,4 +1,4 @@
-import { getMoviesList, getMovieDetails } from "../../../api/movieAPI";
+import { getMoviesList, getMovieDetails } from "api/movieAPI";
 
 let moviesData, moviesDataRu, movies, moviesRu;
 

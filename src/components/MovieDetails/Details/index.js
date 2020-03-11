@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Poster from "../../../shared/Poster";
+import Poster from "shared/Poster";
 import Info from "./Info";
 
 const PosterWithAddStyles = styled(Poster)`

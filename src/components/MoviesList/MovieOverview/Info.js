@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Title from "./Title";
-import Genres from "../../../shared/Genres";
+import Genres from "shared/Genres";
 
 const Info = ({ title, rating, genres, className }) => (
   <div className={className}>

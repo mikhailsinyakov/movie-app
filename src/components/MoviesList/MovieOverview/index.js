@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { isNull } from "../../../helpers/customPropCheckers";
-import Poster from "../../../shared/Poster";
+import { isNull } from "helpers/customPropCheckers";
+import Poster from "shared/Poster";
 import Info from "./Info";
 
 const MovieOverview = ({ movie, className }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { act, create } from "react-test-renderer";
-import withLanguage, { withLanguageContext } from "../../components/Language";
+import withLanguage, { withLanguageContext } from "components/Language";
 
 const ChildComponent = () => {
   return <div className="child"></div>;

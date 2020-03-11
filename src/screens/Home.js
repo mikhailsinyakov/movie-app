@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import Header from "../components/Header";
-import Settings from "../components/Settings";
-import MoviesList from "../components/MoviesList";
-import Footer from "../components/Footer";
-import { isNull } from "../helpers/customPropCheckers";
+import Header from "components/Header";
+import Settings from "components/Settings";
+import MoviesList from "components/MoviesList";
+import Footer from "components/Footer";
+import { isNull } from "helpers/customPropCheckers";
 
 const Home = ({ moviesData, getMoreMovies }) => {
   return (
