@@ -24,3 +24,19 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+/* for smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    height: 100vh;
+    overflow: scroll;
+  }
+}
+
+/* for stylus-based screens */
+@media (hover: none) and (pointer: fine) {
+  body {
+    height: 100vh;
+    overflow: scroll;
+  }
+}
