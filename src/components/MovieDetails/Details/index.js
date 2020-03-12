@@ -21,7 +21,7 @@ const Details = ({ details, className }) => (
 Details.propTypes = {
   details: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    poster_src: PropTypes.string.isRequired,
+    poster_src: PropTypes.string,
     budget: PropTypes.number.isRequired,
     revenue: PropTypes.number.isRequired,
     original_title: PropTypes.string.isRequired,

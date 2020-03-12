@@ -3,8 +3,8 @@ import { getMoviesList, getMovieDetails } from "api/movieAPI";
 let moviesData, moviesDataRu, movies, moviesRu;
 
 beforeAll(async () => {
-  moviesData = await getMoviesList().promise;
-  moviesDataRu = await getMoviesList({ language: "ru" }).promise;
+  moviesData = await getMoviesList();
+  moviesDataRu = await getMoviesList({ language: "ru" });
   movies = moviesData.results;
   moviesRu = moviesDataRu.results;
 });
@@ -48,8 +48,8 @@ describe("getMovieDetails", () => {
   beforeAll(async () => {
     const movieId = movies[Math.floor(Math.random() * movies.length)].id;
     const movieRuId = moviesRu[Math.floor(Math.random() * moviesRu.length)].id;
-    movie = await getMovieDetails({ movieId }).promise;
-    movieRu = await getMovieDetails({ movieId: movieRuId }).promise;
+    movie = await getMovieDetails({ movieId });
+    movieRu = await getMovieDetails({ movieId: movieRuId });
   });
 
   it("movie is an object and it has all the necessary properties", () => {

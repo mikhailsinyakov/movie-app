@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withLanguageContext } from "../Language";
@@ -15,38 +15,45 @@ const Wrapper = styled.div`
 `;
 
 const MoviesList = ({ language, getUIText, className }) => {
+  const isMounted = useRef(false);
   const [moviesData, setMoviesData] = useState({
     page: 0,
     total_pages: 0,
     results: []
   });
 
-  const fetchMoviesData = (page = 1) => {
-    if (page === 1 && cache.has("movies", "latest", language)) {
+  useEffect(() => {
+    isMounted.current = true;
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    let ignore = false;
+    if (cache.has("movies", "latest", language)) {
       setMoviesData(cache.get("movies", "latest", language));
     } else {
-      const { cancel, promise } = getMoviesList({ language, page });
-      (async () => {
-        try {
-          const newMoviesData = await promise;
-          if (page === moviesData.page + 1) {
-            newMoviesData.results = [
-              ...moviesData.results,
-              ...newMoviesData.results
-            ];
-          }
-          cache.set("movies", "latest", language, newMoviesData);
-          setMoviesData(newMoviesData);
-        } catch (e) {
-          console.error(e);
-        }
-      })();
-      return () => cancel("Component has unmounted");
+      getMoviesList({ language })
+        .then(initMoviesData => {
+          cache.set("movies", "latest", language, initMoviesData);
+          !ignore && setMoviesData(initMoviesData);
+        })
+        .catch(console.error);
     }
-  };
-  const getMoreMovies = () => fetchMoviesData(moviesData.page + 1);
+    return () => (ignore = true);
+  }, [language]);
 
-  useEffect(fetchMoviesData, [language]);
+  const addMoviesData = () => {
+    getMoviesList({ language, page: moviesData.page + 1 })
+      .then(newMoviesData => {
+        newMoviesData.results = [
+          ...moviesData.results,
+          ...newMoviesData.results
+        ];
+        cache.set("movies", "latest", language, newMoviesData);
+        isMounted.current && setMoviesData(newMoviesData);
+      })
+      .catch(console.error);
+  };
 
   return (
     <Wrapper>
@@ -56,7 +63,7 @@ const MoviesList = ({ language, getUIText, className }) => {
         ))}
       </div>
       {moviesData.page !== moviesData.total_pages ? (
-        <Button onClick={getMoreMovies}>{getUIText("more")}</Button>
+        <Button onClick={addMoviesData}>{getUIText("more")}</Button>
       ) : null}
     </Wrapper>
   );

@@ -6,24 +6,14 @@ import Details from "./Details";
 
 const MovieDetails = ({ id, language }) => {
   const [details, setDetails] = useState(null);
-  const fetchDetails = () => {
-    const { cancel, promise } = getMovieDetails({
-      language,
-      movieId: id
-    });
-    (async () => {
-      try {
-        const details = await promise;
-        setDetails(details);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
-    return () => cancel("Component has unmounted");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  };
-  useEffect(fetchDetails, []);
-  useEffect(fetchDetails, [language]);
+  useEffect(() => {
+    let ignore = false;
+    getMovieDetails({ language, movieId: id })
+      .then(details => !ignore && setDetails(details))
+      .catch(console.error);
+
+    return () => (ignore = true);
+  }, [id, language]);
 
   if (!details) return null;
   return <Details details={details} />;
