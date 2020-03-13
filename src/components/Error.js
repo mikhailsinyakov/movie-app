@@ -3,12 +3,28 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withLanguageContext } from "./Language";
 
+const Title = styled.h2`
+  font-size: 1.15rem;
+  @media screen and (min-width: 400px) {
+    & {
+      font-size: 1.3rem;
+    }
+  }
+`;
+
+const Problem = styled.p`
+  font-size: 1.1rem;
+`;
+
+const Solution = styled.p`
+  font-style: italic;
+`;
 const Error = ({ getUIText, className }) => (
   <div className={className}>
     <img src="img/error.png" alt="error" />
-    <h2>{getUIText("errorTitle")}</h2>
-    <p>{getUIText("errorProblem")}</p>
-    <p>{getUIText("errorSolution")}</p>
+    <Title>{getUIText("errorTitle")}</Title>
+    <Problem>{getUIText("errorProblem")}</Problem>
+    <Solution>{getUIText("errorSolution")}</Solution>
   </div>
 );
 

@@ -3,20 +3,26 @@
 exports[`Snapshot matches snapshot 1`] = `
 <div>
   <div
-    className="sc-AxjAm itFQbf"
+    className="sc-AxhCb aKCJA"
   >
     <img
       alt="error"
       src="img/error.png"
     />
-    <h2>
+    <h2
+      className="sc-AxjAm iVxxQX"
+    >
       Oops! Something went wrong!
     </h2>
-    <p>
-      We encountered an error while trying to fetch the data from third-party resource.
+    <p
+      className="sc-AxirZ kTachs"
+    >
+      Failed to fetch data from third-party resource.
     </p>
-    <p>
-      Try go to the website later
+    <p
+      className="sc-AxiKw cJJJEU"
+    >
+      Try to come to the site later
     </p>
   </div>
 </div>

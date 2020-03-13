@@ -37,8 +37,8 @@ describe("Error", () => {
     const { getByText, getByAltText } = renderComponent();
     expect(getByText(/oops/i)).toBeInTheDocument();
     expect(getByText(/something went wrong/i)).toBeInTheDocument();
-    expect(getByText(/we encountered an error/i)).toBeInTheDocument();
-    expect(getByText(/try go to the website later/i)).toBeInTheDocument();
+    expect(getByText(/failed to fetch data/i)).toBeInTheDocument();
+    expect(getByText(/try to come to the site later/i)).toBeInTheDocument();
     expect(getByAltText(/error/i)).toBeInTheDocument();
   });
 });

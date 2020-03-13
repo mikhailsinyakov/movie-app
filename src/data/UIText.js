@@ -42,12 +42,11 @@ const data = {
     ru: "Упс! Что-то пошло не так!"
   },
   errorProblem: {
-    en:
-      "We encountered an error while trying to fetch the data from third-party resource.",
-    ru: "Произошла ошибка при получении данных со стороннего ресурса"
+    en: "Failed to fetch data from third-party resource.",
+    ru: "Не получилось получить данные со стороннего ресурса"
   },
   errorSolution: {
-    en: "Try go to the website later",
+    en: "Try to come to the site later",
     ru: "Попробуйте зайти на сайт позднее"
   }
 };
