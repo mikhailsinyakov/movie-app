@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { withLanguageContext } from "../Language";
 import MovieOverview from "./MovieOverview";
 import Button from "shared/Button";
+import Error from "components/Error";
 import { getMoviesList } from "api/movieAPI";
 import cache from "cache";
 
@@ -22,6 +23,8 @@ const MoviesList = ({ language, getUIText, className }) => {
     results: []
   });
 
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     isMounted.current = true;
     return () => (isMounted.current = false);
@@ -37,7 +40,7 @@ const MoviesList = ({ language, getUIText, className }) => {
           cache.set("movies", "latest", language, initMoviesData);
           !ignore && setMoviesData(initMoviesData);
         })
-        .catch(console.error);
+        .catch(setError);
     }
     return () => (ignore = true);
   }, [language]);
@@ -52,7 +55,7 @@ const MoviesList = ({ language, getUIText, className }) => {
         cache.set("movies", "latest", language, newMoviesData);
         isMounted.current && setMoviesData(newMoviesData);
       })
-      .catch(console.error);
+      .catch(setError);
   };
 
   return (
@@ -62,7 +65,8 @@ const MoviesList = ({ language, getUIText, className }) => {
           <MovieOverview key={movie.id} movie={movie} />
         ))}
       </div>
-      {moviesData.page !== moviesData.total_pages ? (
+      {error && <Error />}
+      {moviesData.page !== moviesData.total_pages && !error ? (
         <Button onClick={addMoviesData}>{getUIText("more")}</Button>
       ) : null}
     </Wrapper>

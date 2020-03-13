@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot matches snapshot 1`] = `
+<div>
+  <div
+    className="sc-AxjAm itFQbf"
+  >
+    <img
+      alt="error"
+      src="img/error.png"
+    />
+    <h2>
+      Oops! Something went wrong!
+    </h2>
+    <p>
+      We encountered an error while trying to fetch the data from third-party resource.
+    </p>
+    <p>
+      Try go to the website later
+    </p>
+  </div>
+</div>
+`;

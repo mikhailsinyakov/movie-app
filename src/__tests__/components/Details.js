@@ -1,6 +1,6 @@
 import React from "react";
 import Renderer from "react-test-renderer";
-import { render, getByText } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import withLanguage from "components/Language";
 import Details from "components/MovieDetails/Details";
