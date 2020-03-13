@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 const ScrollRestoration = () => {
@@ -7,23 +7,25 @@ const ScrollRestoration = () => {
   const timer = useRef(null);
   const interval = useRef(null);
 
-  const handleScroll = useCallback(() => {
-    if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => {
-      scrollData.current[pathname] = {
-        scrollPos: window.pageYOffset,
-        pageHeight: window.document.documentElement.scrollHeight
-      };
-      timer.current = null;
-    }, 200);
-  }, [pathname]);
-
-  const handleGoToNewPage = useCallback(() => {
+  useEffect(() => {
+    const handleScroll = () => {
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = setTimeout(() => {
+        scrollData.current[pathname] = {
+          scrollPos: window.pageYOffset,
+          pageHeight: window.document.documentElement.scrollHeight
+        };
+        timer.current = null;
+      }, 200);
+    };
     const endCheckingPage = () => {
       clearInterval(interval.current);
       interval.current = null;
       window.addEventListener("scroll", handleScroll);
     };
+
+    if (pathname !== "/") return;
+
     if (scrollData.current[pathname]) {
       let count = 0;
       interval.current = setInterval(() => {
@@ -39,10 +41,6 @@ const ScrollRestoration = () => {
     } else {
       window.addEventListener("scroll", handleScroll);
     }
-  }, [pathname, handleScroll]);
-
-  useEffect(() => {
-    handleGoToNewPage();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -55,7 +53,7 @@ const ScrollRestoration = () => {
         interval.current = null;
       }
     };
-  }, [handleGoToNewPage, handleScroll]);
+  }, [pathname]);
 
   return null;
 };
