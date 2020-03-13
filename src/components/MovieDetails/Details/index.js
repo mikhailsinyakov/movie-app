@@ -5,10 +5,13 @@ import Poster from "shared/Poster";
 import Info from "./Info";
 
 const PosterWithAddStyles = styled(Poster)`
-  width: 250px;
   align-self: flex-start;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+
+  @media screen and (min-width: 700px) {
+    width: 250px;
+  }
 `;
 
 const Details = ({ details, className }) => (
