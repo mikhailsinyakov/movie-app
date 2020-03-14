@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withLanguageContext } from "./Language";
+import { LanguageContext } from "./Language";
 
 const ImageWrapper = styled.div`
   margin: calc((100vh - 320px) / 7) auto calc((100vh - 320px) / 7 + 0.5rem);
@@ -78,7 +77,8 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const NotFound = ({ getUIText, className }) => {
+const NotFound = ({ className }) => {
+  const { getUIText } = useContext(LanguageContext);
   useEffect(() => {
     window.document.title = 
       `${getUIText("notFoundPage")} | ${getUIText("appName")}`;
@@ -94,10 +94,6 @@ const NotFound = ({ getUIText, className }) => {
   );
 }
 
-NotFound.propTypes = {
-  getUIText: PropTypes.func.isRequired
-};
-
 const StyledNotFound = styled(NotFound)`
   position: absolute;
   top: 3rem;
@@ -110,4 +106,4 @@ const StyledNotFound = styled(NotFound)`
   text-align: center;
 `;
 
-export default withLanguageContext(StyledNotFound);
+export default StyledNotFound;

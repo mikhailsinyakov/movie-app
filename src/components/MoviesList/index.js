@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
-import { withLanguageContext } from "../Language";
+import { LanguageContext } from "../Language";
 import MovieOverview from "./MovieOverview";
 import Button from "shared/Button";
 import Error from "components/Error";
@@ -15,7 +14,8 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MoviesList = ({ language, getUIText, className }) => {
+const MoviesList = ({ className }) => {
+  const { language, getUIText } = useContext(LanguageContext);
   const isMounted = useRef(false);
   const [moviesData, setMoviesData] = useState({
     page: 0,
@@ -77,15 +77,10 @@ const MoviesList = ({ language, getUIText, className }) => {
   );
 };
 
-MoviesList.propTypes = {
-  language: PropTypes.string.isRequired,
-  getUIText: PropTypes.func.isRequired
-};
-
 const StyledMoviesList = styled(MoviesList)`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 `;
 
-export default withLanguageContext(StyledMoviesList);
+export default StyledMoviesList;

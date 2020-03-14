@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { LanguageContext, withLanguageContext } from "./context";
+import { stickLanguage } from "data/UIText";
+
+export const LanguageContext = React.createContext();
 
 const withLanguage = Component => props => {
   const setLanguageOutside = language => {
@@ -26,7 +28,11 @@ const withLanguage = Component => props => {
 
   return (
     <LanguageContext.Provider
-      value={{ language, setLanguage: setLanguageEverywhere }}
+      value={{ 
+        language, 
+        setLanguage: setLanguageEverywhere,
+        getUIText: stickLanguage(language)
+       }}
     >
       <Component {...props} />
     </LanguageContext.Provider>
@@ -34,5 +40,3 @@ const withLanguage = Component => props => {
 };
 
 export default withLanguage;
-
-export { withLanguageContext };

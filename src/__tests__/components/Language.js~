@@ -1,21 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { act, create } from "react-test-renderer";
-import withLanguage, { LanguageContext } from "components/Language";
+import withLanguage, { withLanguageContext } from "components/Language";
 
 const ChildComponent = () => {
-  const { language, setLanguage } = useContext(LanguageContext);
   return <div className="child"></div>;
 };
 
-const ChildWithContext = () => {
-  const { language, setLanguage } = useContext(LanguageContext);
-  return <ChildComponent language={language} setLanguage={setLanguage} />;
-};
+const ChildWithContext = withLanguageContext(ChildComponent);
 
 const RootComponent = () => {
   return (
     <div className="root">
-      <ChildWithContext />S
+      <ChildWithContext />
     </div>
   );
 };
@@ -30,6 +26,15 @@ const renderComponent = () => {
 it("matches snapshot", () => {
   const { component } = renderComponent();
   expect(component.toJSON()).toMatchSnapshot();
+});
+
+it("Child component has language and setLanguage props", () => {
+  const { instance } = renderComponent();
+  expect(instance.findByType(ChildComponent).props).toHaveProperty("language");
+
+  expect(instance.findByType(ChildComponent).props).toHaveProperty(
+    "setLanguage"
+  );
 });
 
 it("language should be 'ru' after calling setLanguage('ru')", () => {

@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { getMovieDetails } from "api/movieAPI";
 import Error from "components/Error";
-import { withLanguageContext } from "../Language";
+import { LanguageContext } from "../Language";
 import Details from "./Details";
 
-const MovieDetails = ({ id, language, getUIText }) => {
+const MovieDetails = ({ id }) => {
+  const { language, getUIText } = useContext(LanguageContext);
 	const [details, setDetails] = useState(null);
 	const [error, setError] = useState(null);
 
@@ -30,8 +31,7 @@ const MovieDetails = ({ id, language, getUIText }) => {
 };
 
 MovieDetails.propTypes = {
-  id: PropTypes.number.isRequired,
-  language: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired
 };
 
-export default withLanguageContext(MovieDetails);
+export default MovieDetails;

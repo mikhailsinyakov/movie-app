@@ -22,7 +22,7 @@ const MovieDetails = ({ id, language, getUIText }) => {
     if (details) {
       window.document.title = `${details.title} | ${getUIText("appName")}`;
     }
-  }, [details]);
+  }, [details, getUIText]);
 
 	if (error) return <Error />;
 	if (!details) return null;

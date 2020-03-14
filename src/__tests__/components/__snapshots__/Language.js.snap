@@ -7,5 +7,6 @@ exports[`matches snapshot 1`] = `
   <div
     className="child"
   />
+  S
 </div>
 `;

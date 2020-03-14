@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Logo from "./Logo";
-import { LanguageContext } from "../Language";
+import { withLanguageContext } from "../Language";
 
 const Head = styled.h1`
   font-size: 1.5em;
@@ -10,8 +11,7 @@ const Head = styled.h1`
   text-shadow: 0 0 5px black;
 `;
 
-const Header = ({ className }) => {
-  const { getUIText } = useContext(LanguageContext);
+const Header = ({ getUIText, className }) => {
   return (
     <header className={className}>
       <Logo filename="app-logo.svg" href="/" size="medium" />
@@ -23,6 +23,12 @@ const Header = ({ className }) => {
       />
     </header>
   );
+};
+
+Header.propTypes = {
+  language: PropTypes.string.isRequired,
+  setLanguage: PropTypes.func.isRequired,
+  getUIText: PropTypes.func.isRequired
 };
 
 const StyledHeader = styled(Header)`
@@ -37,4 +43,4 @@ const StyledHeader = styled(Header)`
   border-radius: 0.5rem;
 `;
 
-export default StyledHeader;
+export default withLanguageContext(StyledHeader);

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import { LanguageContext } from "./Language";
+import { withLanguageContext } from "./Language";
 import Select from "shared/Select";
 
-const Settings = ({ className }) => {
-  const { language, setLanguage } = useContext(LanguageContext);
+const Settings = ({ language, setLanguage, className }) => {
   const languageOptions = [
     { value: "en", name: "EN" },
     { value: "ru", name: "RU" }
@@ -21,8 +21,13 @@ const Settings = ({ className }) => {
   );
 };
 
+Settings.propTypes = {
+  language: PropTypes.string.isRequired,
+  setLanguage: PropTypes.func.isRequired
+};
+
 const StyledSettings = styled(Settings)`
   padding: 0.5rem 1rem;
 `;
 
-export default StyledSettings;
+export default withLanguageContext(StyledSettings);
