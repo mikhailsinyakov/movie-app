@@ -56,10 +56,6 @@ const data = {
   pageNotFoundSrc: {
     en: "img/page-not-found-en.png",
     ru: "img/page-not-found-ru.png"
-  },
-  notFoundPage: {
-    en: "Not found page",
-    ru: "Страница не найдена"
   }
 };
 

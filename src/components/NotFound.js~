@@ -78,7 +78,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const NotFound = ({ getUIText, className }) => {
+const NotFound = ({ language, getUIText, className }) => {
   useEffect(() => {
     window.document.title = 
       `${getUIText("notFoundPage")} | ${getUIText("appName")}`;

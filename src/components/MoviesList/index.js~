@@ -27,7 +27,7 @@ const MoviesList = ({ language, getUIText, className }) => {
   
   useEffect(() => {
     window.document.title = getUIText("appName");
-  }, [getUIText]);
+  }, [language]);
 
   useEffect(() => {
     isMounted.current = true;
