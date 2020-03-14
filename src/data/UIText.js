@@ -48,6 +48,14 @@ const data = {
   errorSolution: {
     en: "Try to come to the site later",
     ru: "Попробуйте зайти на сайт позднее"
+  },
+  goToMainPage: {
+    en: "Go to the main page",
+    ru: "Перейти на главную страницу"
+  },
+  pageNotFoundSrc: {
+    en: "img/page-not-found-en.png",
+    ru: "img/page-not-found-ru.png"
   }
 };
 

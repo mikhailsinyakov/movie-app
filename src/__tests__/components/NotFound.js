@@ -1,9 +1,10 @@
 import React from "react";
+import { MemoryRouter as Router } from "react-router-dom";
 import Renderer from "react-test-renderer";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import withLanguage from "components/Language";
-import Error from "components/Error";
+import NotFound from "components/NotFound";
 
 const Parent = ({ children }) => <div>{children}</div>;
 const ParentWithLanguage = withLanguage(Parent);
@@ -12,9 +13,11 @@ describe("Snapshot", () => {
   let component;
   beforeEach(() => {
     component = Renderer.create(
-      <ParentWithLanguage>
-        <Error />
-      </ParentWithLanguage>
+      <Router>
+        <ParentWithLanguage>
+          <NotFound />
+        </ParentWithLanguage>
+      </Router>
     );
   });
   afterEach(() => {
@@ -27,18 +30,17 @@ describe("Snapshot", () => {
 
 const renderComponent = () =>
   render(
-    <ParentWithLanguage>
-      <Error />
-    </ParentWithLanguage>
+    <Router>
+      <ParentWithLanguage>
+        <NotFound />
+      </ParentWithLanguage>
+    </Router>
   );
 
-describe("Error", () => {
-  it("renders error message and error image", () => {
+describe("NotFound", () => {
+  it("renders page-not-found image and link", () => {
     const { getByText, getByAltText } = renderComponent();
-    expect(getByText(/oops/i)).toBeInTheDocument();
-    expect(getByText(/something went wrong/i)).toBeInTheDocument();
-    expect(getByText(/failed to fetch data/i)).toBeInTheDocument();
-    expect(getByText(/try to come to the site later/i)).toBeInTheDocument();
-    expect(getByAltText(/error/i)).toBeInTheDocument();
+    expect(getByAltText(/page-not-found/i)).toBeInTheDocument();
+    expect(getByText(/go to the main page/i)).toBeInTheDocument();
   });
 });

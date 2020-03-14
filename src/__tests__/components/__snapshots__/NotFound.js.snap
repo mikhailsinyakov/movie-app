@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot matches snapshot 1`] = `
+<div>
+  <div
+    className="sc-AxhCb coVOru"
+  >
+    <div
+      className="sc-AxjAm jhoanR"
+    >
+      <img
+        alt="page-not-found"
+        className="sc-AxirZ gjMfuY"
+        src="img/page-not-found-en.png"
+      />
+    </div>
+    <a
+      className="sc-AxiKw cqOour"
+      href="/"
+      onClick={[Function]}
+    >
+      Go to the main page
+    </a>
+  </div>
+</div>
+`;
