@@ -7,6 +7,6 @@ import * as serviceWorker from "serviceWorker";
 
 const AppWithLanguage = withLanguage(App);
 ReactDOM.render(<AppWithLanguage />, document.getElementById("root"));
-serviceWorker.unregister();
+serviceWorker.register();
 
 if (module.hot) module.hot.accept();
