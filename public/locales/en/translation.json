@@ -1,0 +1,17 @@
+{
+  "appName": "Movie App",
+  "tmdbAttribution": "This product uses the TMDb API but is not endorsed or certified by TMDb",
+  "more": "More",
+  "budget": "Budget",
+  "revenue": "Revenue",
+  "release": "Release year",
+  "production": "Production",
+  "runtime": "Runtime",
+  "rating": "Rating",
+  "errorTitle": "Oops! Something went wrong!",
+  "errorProblem": "Failed to fetch data from third-party resource",
+  "errorSolution": "Try to come to the site later",
+  "goToMainPage": "Go to the main page",
+  "pageNotFoundSrc": "img/page-not-found-en.png",
+  "notFoundPage": "Not found page"
+}

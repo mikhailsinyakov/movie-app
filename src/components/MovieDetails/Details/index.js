@@ -16,7 +16,11 @@ const PosterWithAddStyles = styled(Poster)`
 
 const Details = ({ details, className }) => (
   <div className={className}>
-    <PosterWithAddStyles source={details.poster_src} title={details.title} />
+    <PosterWithAddStyles 
+      source={details.poster_src} 
+      title={details.title} 
+      key={details.poster_src}
+     />
     <Info {...details} />
   </div>
 );

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { LanguageContext } from "../Language";
+import { useTranslation } from "react-i18next";
 import MovieOverview from "./MovieOverview";
 import Button from "shared/Button";
 import Error from "components/Error";
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const MoviesList = ({ className }) => {
-  const { language, getUIText } = useContext(LanguageContext);
+  const { t, i18n: { language } } = useTranslation();
   const isMounted = useRef(false);
   const [moviesData, setMoviesData] = useState({
     page: 0,
@@ -26,8 +26,8 @@ const MoviesList = ({ className }) => {
   const [error, setError] = useState(null);
   
   useEffect(() => {
-    window.document.title = getUIText("appName");
-  }, [getUIText]);
+    window.document.title = t("appName");
+  }, [t]);
 
   useEffect(() => {
     isMounted.current = true;
@@ -71,7 +71,7 @@ const MoviesList = ({ className }) => {
       </div>
       {error && <Error />}
       {moviesData.page !== moviesData.total_pages && !error ? (
-        <Button onClick={addMoviesData}>{getUIText("more")}</Button>
+        <Button onClick={addMoviesData}>{t("more")}</Button>
       ) : null}
     </Wrapper>
   );

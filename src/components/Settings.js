@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { LanguageContext } from "./Language";
+import { useTranslation } from "react-i18next";
 import Select from "shared/Select";
 
 const Settings = ({ className }) => {
-  const { language, setLanguage } = useContext(LanguageContext);
+  const { i18n } = useTranslation();
   const languageOptions = [
     { value: "en", name: "EN" },
     { value: "ru", name: "RU" }
@@ -14,8 +14,8 @@ const Settings = ({ className }) => {
     <div className={className}>
       <Select
         options={languageOptions}
-        initValue={language}
-        handleChange={setLanguage}
+        initValue={i18n.language}
+        handleChange={val => i18n.changeLanguage(val)}
       />
     </div>
   );

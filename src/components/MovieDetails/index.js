@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 import { getMovieDetails } from "api/movieAPI";
 import Error from "components/Error";
-import { LanguageContext } from "../Language";
 import Details from "./Details";
 
 const MovieDetails = ({ id }) => {
-  const { language, getUIText } = useContext(LanguageContext);
+  const { t, i18n: { language } } = useTranslation();
 	const [details, setDetails] = useState(null);
 	const [error, setError] = useState(null);
 
@@ -21,9 +21,9 @@ const MovieDetails = ({ id }) => {
   
   useEffect(() => {
     if (details) {
-      window.document.title = `${details.title} | ${getUIText("appName")}`;
+      window.document.title = `${details.title} | ${t("appName")}`;
     }
-  }, [details, getUIText]);
+  }, [details, t]);
 
 	if (error) return <Error />;
 	if (!details) return null;

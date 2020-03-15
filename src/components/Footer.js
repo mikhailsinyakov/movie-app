@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { LanguageContext } from "./Language";
+import { useTranslation } from "react-i18next";
 
 const Footer = ({ className }) => {
-  const { getUIText } = useContext(LanguageContext);
+  const { t } = useTranslation();
   return(
     <footer className={className}>
-      <span>{getUIText("tmdbAttribution")}</span>
+      <span>{t("tmdbAttribution")}</span>
     </footer>
   );
 }

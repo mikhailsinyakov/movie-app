@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./i18n";
 import "index.css";
 import App from "components/App";
-import withLanguage from "components/Language";
 import * as serviceWorker from "serviceWorker";
 
-const AppWithLanguage = withLanguage(App);
-ReactDOM.render(<AppWithLanguage />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
+
 serviceWorker.register();
 
 if (module.hot) module.hot.accept();

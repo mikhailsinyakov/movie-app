@@ -13,7 +13,11 @@ const MovieOverview = ({ movie, className }) => {
       className={className}
       onClick={() => history.push(`/movie/${movie.id}`)}
     >
-      <Poster source={movie.poster_src} title={movie.title} />
+      <Poster 
+        source={movie.poster_src} 
+        title={movie.title} 
+        key={movie.poster_src} 
+       />
       <Info
         title={movie.title}
         rating={movie.vote_average}

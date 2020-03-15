@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import Logo from "./Logo";
-import { LanguageContext } from "../Language";
 
 const Head = styled.h1`
   font-size: 1.5em;
@@ -11,11 +11,11 @@ const Head = styled.h1`
 `;
 
 const Header = ({ className }) => {
-  const { getUIText } = useContext(LanguageContext);
+  const { t } = useTranslation();
   return (
     <header className={className}>
       <Logo filename="app-logo.svg" href="/" size="medium" />
-      <Head>{getUIText("appName")}</Head>
+      <Head>{t("appName")}</Head>
       <Logo
         filename="tmdb-logo.png"
         href="https://www.themoviedb.org/"

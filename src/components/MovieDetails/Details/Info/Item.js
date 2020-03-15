@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { LanguageContext } from "components/Language";
+import { useTranslation } from "react-i18next";
 
 const Name = styled.span`
   font-weight: bold;
@@ -12,11 +12,11 @@ const Value = styled.span`
 `;
 
 const Item = ({ name, value, className }) => {
-  const { getUIText } = useContext(LanguageContext);
+  const { t } = useTranslation();
   return (
     value && (
       <p className={className}>
-        <Name>{getUIText(name)}: </Name> <Value>{value}</Value>
+        <Name>{t(name)}: </Name> <Value>{value}</Value>
       </p>
     )
   );

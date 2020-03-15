@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { LanguageContext } from "./Language";
+import { useTranslation } from "react-i18next";
 
 const Title = styled.h2`
   font-size: 1.15rem;
@@ -19,13 +19,13 @@ const Solution = styled.p`
   font-style: italic;
 `;
 const Error = ({ className }) => {
-  const { getUIText } = useContext(LanguageContext);
+  const { t } = useTranslation();
   return (
     <div className={className}>
       <img src="img/error.png" alt="error" />
-      <Title>{getUIText("errorTitle")}</Title>
-      <Problem>{getUIText("errorProblem")}</Problem>
-      <Solution>{getUIText("errorSolution")}</Solution>
+      <Title>{t("errorTitle")}</Title>
+      <Problem>{t("errorProblem")}</Problem>
+      <Solution>{t("errorSolution")}</Solution>
     </div>
   );
 };

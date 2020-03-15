@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { LanguageContext } from "./Language";
+import { useTranslation } from "react-i18next";
 
 const ImageWrapper = styled.div`
   margin: calc((100vh - 320px) / 7) auto calc((100vh - 320px) / 7 + 0.5rem);
@@ -78,18 +78,18 @@ const StyledLink = styled(Link)`
 `;
 
 const NotFound = ({ className }) => {
-  const { getUIText } = useContext(LanguageContext);
+  const { t } = useTranslation();
   useEffect(() => {
     window.document.title = 
-      `${getUIText("notFoundPage")} | ${getUIText("appName")}`;
-  }, [getUIText]);
+      `${t("notFoundPage")} | ${t("appName")}`;
+  }, [t]);
 
   return (
     <div className={className}>
       <ImageWrapper>
-        <Image src={getUIText("pageNotFoundSrc")} alt="page-not-found" />
+        <Image src={t("pageNotFoundSrc")} alt="page-not-found" />
       </ImageWrapper>
-      <StyledLink to="/">{getUIText("goToMainPage")}</StyledLink>
+      <StyledLink to="/">{t("goToMainPage")}</StyledLink>
     </div>
   );
 }

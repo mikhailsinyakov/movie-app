@@ -1,0 +1,17 @@
+{
+  "appName": "Фильмы",
+  "tmdbAttribution": "Этот продукт использует TMDb API, но не одобрен и не сертифицирован TMDb",
+  "more": "Ещё",
+  "budget": "Бюджет",
+  "revenue": "Сборы",
+  "release": "Год выпуска",
+  "production": "Производство",
+  "runtime": "Продолжительность",
+  "rating": "Рейтинг",
+  "errorTitle": "Упс! Что-то пошло не так!",
+  "errorProblem": "Не получилось получить данные со стороннего ресурса",
+  "errorSolution": "Попробуйте зайти на сайт позднее",
+  "goToMainPage": "Перейти на главную страницу",
+  "pageNotFoundSrc": "img/page-not-found-ru.png",
+  "notFoundPage": "Страница не найдена"
+}
