@@ -5,7 +5,6 @@ import MovieOverview from "./MovieOverview";
 import Button from "shared/Button";
 import Error from "components/Error";
 import { getMoviesList } from "api/movieAPI";
-import cache from "cache";
 
 const Wrapper = styled.div`
   text-align: center;
@@ -36,16 +35,11 @@ const MoviesList = ({ className }) => {
 
   useEffect(() => {
     let ignore = false;
-    if (cache.has("movies", "latest", language)) {
-      setMoviesData(cache.get("movies", "latest", language));
-    } else {
-      getMoviesList({ language })
-        .then(initMoviesData => {
-          cache.set("movies", "latest", language, initMoviesData);
-          !ignore && setMoviesData(initMoviesData);
-        })
-        .catch(setError);
-    }
+    getMoviesList({ language })
+      .then(initMoviesData => {
+        !ignore && setMoviesData(initMoviesData);
+      })
+      .catch(setError);
     return () => (ignore = true);
   }, [language]);
 
@@ -56,7 +50,6 @@ const MoviesList = ({ className }) => {
           ...moviesData.results,
           ...newMoviesData.results
         ];
-        cache.set("movies", "latest", language, newMoviesData);
         isMounted.current && setMoviesData(newMoviesData);
       })
       .catch(setError);
