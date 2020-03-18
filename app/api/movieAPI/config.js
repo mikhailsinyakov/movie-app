@@ -17,14 +17,15 @@ const definePosterSize = (posterSizes, width) => {
 
 const getConfigFromAPI = async () => {
   const urlPaths = [
-    "/configuration",
+    "/configuration?language=en",
     "/genre/movie/list?language=en",
-    "/genre/movie/list?language=en"
+    "/genre/movie/list?language=ru"
   ];
   const [configData, genresDataEn, genresDataRu] = await Promise.all(
     urlPaths.map(
       async (path) => await request(path) )
   );
+  
   const posterSize = definePosterSize(configData.images.poster_sizes, 300);
 
   return {
