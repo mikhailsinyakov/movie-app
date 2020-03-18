@@ -22,3 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/app/api/movieAPI/cache.json
+/app/api/movieAPI/config.json
