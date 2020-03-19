@@ -13,5 +13,8 @@
   "errorSolution": "Try to come to the site later",
   "goToMainPage": "Go to the main page",
   "pageNotFoundSrc": "img/page-not-found-en.png",
-  "notFoundPage": "Not found page"
+  "notFoundPage": "Not found page",
+  "nowPlaying": "Now playing",
+  "popular": "Popular",
+  "topRated": "Top rated"
 }

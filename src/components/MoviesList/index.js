@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import MovieOverview from "./MovieOverview";
 import Button from "shared/Button";
 import Error from "components/Error";
+import { CategoryContext } from "components/Category";
 import { getMoviesList } from "api/movieAPI";
+import * as cache from "homePageCache";
 
 const Wrapper = styled.div`
   text-align: center;
@@ -14,6 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const MoviesList = ({ className }) => {
+  const { category } = useContext(CategoryContext);
   const { t, i18n: { language } } = useTranslation();
   const isMounted = useRef(false);
   const [moviesData, setMoviesData] = useState({
@@ -35,16 +38,26 @@ const MoviesList = ({ className }) => {
 
   useEffect(() => {
     let ignore = false;
-    getMoviesList({ language })
-      .then(initMoviesData => {
-        !ignore && setMoviesData(initMoviesData);
-      })
-      .catch(setError);
+    if (cache.has(language, category)) {
+      const initMoviesData = cache.get(language, category);
+      setMoviesData(initMoviesData);
+      cache.clear();
+    } else {
+      getMoviesList({ category, language })
+        .then(initMoviesData => {
+          !ignore && setMoviesData(initMoviesData);
+        })
+        .catch(setError);
+    }
     return () => (ignore = true);
-  }, [language]);
+  }, [language, category]);
+  
+  useEffect(() => {
+    cache.set(language, category, moviesData);
+  }, [language, category, moviesData]);
 
   const addMoviesData = () => {
-    getMoviesList({ language, page: moviesData.page + 1 })
+    getMoviesList({ category, language, page: moviesData.page + 1 })
       .then(newMoviesData => {
         newMoviesData.results = [
           ...moviesData.results,

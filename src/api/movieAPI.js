@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const getMoviesList = async ({ language = "en", page = 1 } = {}) => {
-  const path = "/api/movies/now_playing";
+export const getMoviesList = async (
+  { category, language = "en", page = 1 } = {}
+) => {
+  const path = `/api/movies/${category}`;
   const response = await axios({
     url: path,
     params: {

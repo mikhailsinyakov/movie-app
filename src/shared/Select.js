@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Select = ({ options, initValue, handleChange, className }) => {
+const Select = ({ 
+  options, initValue, handleChange, showOnlyOhHomePage = false, className }
+) => {
   const [value, setValue] = useState(initValue);
+  const { pathname } = useLocation();
 
   const onChange = e => {
     setValue(e.target.value);
@@ -11,7 +15,12 @@ const Select = ({ options, initValue, handleChange, className }) => {
   };
 
   return (
-    <select value={value} onChange={onChange} className={className}>
+    <select 
+      value={value} 
+      onChange={onChange} 
+      style={{display: (pathname !== "/" && showOnlyOhHomePage ? "none" : "inline")}}
+      className={className}
+    >
       {options.map(({ value, name }) => (
         <option key={value} value={value}>
           {name}
@@ -39,6 +48,7 @@ const StyledSelect = styled(Select)`
   border-radius: 0.4rem;
   padding: 0 0.5rem;
   font-family: inherit;
+  margin-right: 1rem;
 
   &:focus {
     outline: none;

@@ -13,5 +13,8 @@
   "errorSolution": "Попробуйте зайти на сайт позднее",
   "goToMainPage": "Перейти на главную страницу",
   "pageNotFoundSrc": "img/page-not-found-ru.png",
-  "notFoundPage": "Страница не найдена"
+  "notFoundPage": "Страница не найдена",
+  "nowPlaying": "В кинотеатрах",
+  "popular": "Популярные",
+  "topRated": "По рейтингу"
 }

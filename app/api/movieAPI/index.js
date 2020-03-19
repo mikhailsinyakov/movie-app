@@ -16,6 +16,7 @@ exports.getMoviesList = async (category, page = 1, language = "en") => {
     result = await request(path, language);
     cache.set(path, result);
   }
+  
   return {
     ...result,
     results: result.results.map(movie => ({

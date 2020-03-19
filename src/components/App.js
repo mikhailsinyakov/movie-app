@@ -5,6 +5,7 @@ import ScrollRestoration from "./ScrollRestoration";
 import HomeScreen from "screens/Home";
 import MovieScreen from "screens/Movie";
 import NotFoundScreen from "screens/NotFound";
+import { withCategoryContext } from "./Category";
 
 const App = () => {
   const { ready, i18n: { language } } = useTranslation();
@@ -31,4 +32,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withCategoryContext(App);
