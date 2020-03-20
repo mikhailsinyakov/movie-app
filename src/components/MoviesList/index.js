@@ -71,7 +71,7 @@ const MoviesList = ({ className }) => {
         ))}
       </div>
       {error && <Error />}
-      {moviesData.page <= moviesData.total_pages && !error ? (
+      {moviesData.page < moviesData.total_pages && !error ? (
         <Button onClick={addMoviesData}>{t("more")}</Button>
       ) : null}
     </Wrapper>
