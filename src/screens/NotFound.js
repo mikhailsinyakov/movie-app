@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import Header from "components/Header";
-import Settings from "components/Settings";
 import NotFound from "components/NotFound";
 import Footer from "components/Footer";
 
@@ -14,7 +13,6 @@ const NotFoundPage = () => (
   <Fragment>
     <Header />
     <Main>
-      <Settings />
       <NotFound />
     </Main>
     <Footer />

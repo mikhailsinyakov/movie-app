@@ -1,13 +1,26 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { HomeStateContext } from "components/HomeState";
 
-const Select = ({ 
-  options, initValue, handleChange, showOnlyOhHomePage = false, className }
-) => {
+const Select = ({ options, initValue, handleChange, showAlways, className }) => {
+  const { isSearchActive } = useContext(HomeStateContext);
   const [value, setValue] = useState(initValue);
-  const { pathname } = useLocation();
+  const [show, setShow] = useState(!isSearchActive);
+  
+  useEffect(() => {
+    if (!showAlways) {
+      if (!isSearchActive) {
+        setTimeout(() => {
+          setShow(true);
+        }, 500);
+      } else setShow(false);
+    }
+  }, [showAlways, isSearchActive]);
+  
+  const style = {
+    display: showAlways ? "inline" : show ? "inline" : "none"
+  };
 
   const onChange = e => {
     setValue(e.target.value);
@@ -18,8 +31,8 @@ const Select = ({
     <select 
       value={value} 
       onChange={onChange} 
-      style={{display: (pathname !== "/" && showOnlyOhHomePage ? "none" : "inline")}}
       className={className}
+      style={style}
     >
       {options.map(({ value, name }) => (
         <option key={value} value={value}>
@@ -38,8 +51,11 @@ Select.propTypes = {
     })
   ),
   initValue: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
+  handleChange: PropTypes.func.isRequired,
+  showAlways: PropTypes.bool.isRequired
 };
+
+
 
 const StyledSelect = styled(Select)`
   background: #e6e6e8;
@@ -48,7 +64,7 @@ const StyledSelect = styled(Select)`
   border-radius: 0.4rem;
   padding: 0 0.5rem;
   font-family: inherit;
-  margin-right: 1rem;
+  margin: 0.5rem 0.5rem;
 
   &:focus {
     outline: none;

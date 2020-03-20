@@ -15,6 +15,7 @@ app.get("/api/movies/:category", async (req, res) => {
     res.send(moviesList);
   } 
   catch (e) {
+    console.log(e);
     res.status(500).send(e);
   }
 });
@@ -26,6 +27,17 @@ app.get("/api/movie/:movieId", async (req, res) => {
     const movieDetails = await movieAPI.getMovieDetails(movieId, language);
     res.send(movieDetails);
   }
+  catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.get("/api/search", async (req, res) => {
+  const { query, language, page } = req.query;
+  try {
+    const moviesList = await movieAPI.getMoviesListBySearch(query, page, language);
+    res.send(moviesList);
+  } 
   catch (e) {
     res.status(500).send(e);
   }

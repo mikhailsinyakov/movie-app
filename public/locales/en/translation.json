@@ -16,5 +16,7 @@
   "notFoundPage": "Not found page",
   "nowPlaying": "Now playing",
   "popular": "Popular",
-  "topRated": "Top rated"
+  "topRated": "Top rated",
+  "search": "Search",
+  "typeMovieTitle": "Type a movie title"
 }

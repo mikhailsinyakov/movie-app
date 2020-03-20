@@ -45,6 +45,7 @@ const StyledDetails = styled(Details)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 1rem;
 `;
 
 export default StyledDetails;

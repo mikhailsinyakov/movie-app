@@ -2,11 +2,7 @@ import React from "react";
 import Renderer from "react-test-renderer";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import withLanguage from "components/Language";
 import Details from "components/MovieDetails/Details";
-
-const Parent = ({ children }) => <div>{children}</div>;
-const ParentWithLanguage = withLanguage(Parent);
 
 const details = {
   budget: 15000000,
@@ -27,9 +23,7 @@ describe("Snapshot", () => {
   let component;
   beforeEach(() => {
     component = Renderer.create(
-      <ParentWithLanguage>
-        <Details details={details} />
-      </ParentWithLanguage>
+      <Details details={details} />
     );
   });
   afterEach(() => {
@@ -42,9 +36,7 @@ describe("Snapshot", () => {
 
 const renderComponent = () =>
   render(
-    <ParentWithLanguage>
-      <Details details={details} />
-    </ParentWithLanguage>
+    <Details details={details} />
   );
 
 describe("Details", () => {

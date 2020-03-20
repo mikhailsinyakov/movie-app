@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import Select from "shared/Select";
-import { CategoryContext } from "./Category";
+import Select from "./Select";
+import Search from "./Search";
+import { HomeStateContext } from "components/HomeState";
 
 const Settings = ({ className }) => {
-  const { category, setCategory } = useContext(CategoryContext);
   const { t, i18n } = useTranslation();
+  const { category, setCategory } = useContext(HomeStateContext);
   const languageOptions = [
     { value: "en", name: "EN" },
     { value: "ru", name: "RU" }
@@ -23,19 +24,25 @@ const Settings = ({ className }) => {
         options={languageOptions}
         initValue={i18n.language}
         handleChange={val => i18n.changeLanguage(val)}
+        showAlways={true}
       />
       <Select
         options={categoryOptions}
         initValue={category}
-        handleChange={val => setCategory(val)}
-        showOnlyOhHomePage={true}
+        handleChange={setCategory}
+        showAlways={false}
       />
+      <Search />
     </div>
   );
 };
 
 const StyledSettings = styled(Settings)`
-  padding: 0.5rem 1rem;
+  display: flex;
+  max-width: 1000px;
+  height: 55px;
+  margin: 0 auto;
+  align-items: center;
 `;
 
 export default StyledSettings;

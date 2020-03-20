@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import MovieOverview from "./MovieOverview";
 import Button from "shared/Button";
 import Error from "components/Error";
-import { CategoryContext } from "components/Category";
-import { getMoviesList } from "api/movieAPI";
-import * as cache from "homePageCache";
+import { getMoviesList, getMoviesListBySearch } from "api/movieAPI";
+import { HomeStateContext } from "components/HomeState";
 
 const Wrapper = styled.div`
   text-align: center;
@@ -16,16 +15,12 @@ const Wrapper = styled.div`
 `;
 
 const MoviesList = ({ className }) => {
-  const { category } = useContext(CategoryContext);
   const { t, i18n: { language } } = useTranslation();
   const isMounted = useRef(false);
-  const [moviesData, setMoviesData] = useState({
-    page: 0,
-    total_pages: 0,
-    results: []
-  });
-
-  const [error, setError] = useState(null);
+  const { 
+    category, moviesData, setMoviesData, 
+    isSearchActive, searchQuery, error, setError
+  } = useContext(HomeStateContext);
   
   useEffect(() => {
     window.document.title = t("appName");
@@ -35,37 +30,37 @@ const MoviesList = ({ className }) => {
     isMounted.current = true;
     return () => (isMounted.current = false);
   }, []);
+  
+  const mergeResults = (results, newResults) => {
+    const mergedResults = results;
+    for (const newResult of newResults) {
+      if (results.findIndex(result => result.id === newResult.id) === -1) {
+        mergedResults.push(newResult);
+      }
+    }
+    return mergedResults;
+  };
 
-  useEffect(() => {
-    let ignore = false;
-    if (cache.has(language, category)) {
-      const initMoviesData = cache.get(language, category);
-      setMoviesData(initMoviesData);
-      cache.clear();
+  const addMoviesData = () => {
+    if (isSearchActive) {
+      getMoviesListBySearch({ 
+        query: encodeURIComponent(searchQuery), 
+        language, 
+        page: moviesData.page + 1 
+      }).then(data => {
+          data.results = mergeResults(moviesData.results, data.results);
+          isMounted.current && setMoviesData(data);
+        })
+        .catch(setError);
     } else {
-      getMoviesList({ category, language })
-        .then(initMoviesData => {
-          !ignore && setMoviesData(initMoviesData);
+      getMoviesList({ category, language, page: moviesData.page + 1 })
+        .then(data => {
+          data.results = mergeResults(moviesData.results, data.results);
+          isMounted.current && setMoviesData(data);
         })
         .catch(setError);
     }
-    return () => (ignore = true);
-  }, [language, category]);
-  
-  useEffect(() => {
-    cache.set(language, category, moviesData);
-  }, [language, category, moviesData]);
-
-  const addMoviesData = () => {
-    getMoviesList({ category, language, page: moviesData.page + 1 })
-      .then(newMoviesData => {
-        newMoviesData.results = [
-          ...moviesData.results,
-          ...newMoviesData.results
-        ];
-        isMounted.current && setMoviesData(newMoviesData);
-      })
-      .catch(setError);
+    
   };
 
   return (
@@ -76,7 +71,7 @@ const MoviesList = ({ className }) => {
         ))}
       </div>
       {error && <Error />}
-      {moviesData.page !== moviesData.total_pages && !error ? (
+      {moviesData.page <= moviesData.total_pages && !error ? (
         <Button onClick={addMoviesData}>{t("more")}</Button>
       ) : null}
     </Wrapper>

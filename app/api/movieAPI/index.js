@@ -8,40 +8,59 @@ cache.init();
 const getPosterSrc = (config, posterPath) =>
   `${config.imageBaseUrl}${config.posterSize}${posterPath}`;
   
+const changeResults = (results, currConfig, language) => {
+  return results.map(movie => ({
+    ...movie,
+    genres: movie.genre_ids.map(genreId => currConfig.genres[language][genreId]),
+    poster_src: movie.poster_path && getPosterSrc(currConfig, movie.poster_path)
+  }));
+};
+  
 exports.getMoviesList = async (category, page = 1, language = "en") => {
   const currConfig = config.get();
   const path = `/movie/${category}?page=${page}&language=${language}`;
-  let result = cache.get(path);
-  if (!result) {
-    result = await request(path, language);
-    cache.set(path, result);
+  let list = cache.get(path);
+  if (!list) {
+    list = await request(path, language);
+    cache.set(path, list);
   }
   
   return {
-    ...result,
-    results: result.results.map(movie => ({
-      ...movie,
-      genres: movie.genre_ids.map(genreId => currConfig.genres[language][genreId]),
-      poster_src: movie.poster_path && getPosterSrc(currConfig, movie.poster_path)
-    }))
+    ...list,
+    results: changeResults(list.results, currConfig, language)
   };
 };
 
 exports.getMovieDetails = async (movieId, language = "en") => {
   const currConfig = config.get();
   const path = `/movie/${movieId}?language=${language}`;
-  let result = cache.get(path);
-  if (!result) {
-    result = await request(path, language);
-    cache.set(path, result);
+  let details = cache.get(path);
+  if (!details) {
+    details = await request(path, language);
+    cache.set(path, details);
   }
   return {
-    ...result,
-    genres: result.genres.map(genre => genre.name),
+    ...details,
+    genres: details.genres.map(genre => genre.name),
     poster_src:
-      result.poster_path && getPosterSrc(currConfig, result.poster_path),
-    production_countries: result.production_countries.map(
+      details.poster_path && getPosterSrc(currConfig, details.poster_path),
+    production_countries: details.production_countries.map(
       contry => contry.name
     )
+  };
+};
+
+exports.getMoviesListBySearch = async (query, page = 1, language = "en") => {
+  const currConfig = config.get();
+  const path = `/search/movie?query=${query}&page=${page}&language=${language}`;
+  let list = cache.get(path);
+  if (!list) {
+    list = await request(path, language);
+    cache.set(path, list);
+  }
+  
+  return {
+    ...list,
+    results: changeResults(list.results, currConfig, language)
   };
 };

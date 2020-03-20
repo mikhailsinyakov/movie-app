@@ -1,145 +1,143 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshot matches snapshot 1`] = `
-<div>
+<div
+  className="sc-fzplWN ikbTeE"
+>
+  <img
+    alt="Dragonheart: Vengeance"
+    className="sc-AxjAm sc-fzpans oPCAb"
+    onError={[Function]}
+    onLoad={[Function]}
+    src="img/poster-placeholder.png"
+  />
   <div
-    className="sc-fzplWN iJnEoU"
+    className="sc-fzoLsD gDwgRa"
   >
-    <img
-      alt="Dragonheart: Vengeance"
-      className="sc-AxjAm sc-fzpans oPCAb"
-      onError={[Function]}
-      onLoad={[Function]}
-      src="img/poster-placeholder.png"
-    />
-    <div
-      className="sc-fzoLsD gDwgRa"
+    <p
+      className="sc-AxiKw keojvp"
     >
-      <p
-        className="sc-AxiKw keojvp"
+      Dragonheart: Vengeance
+       
+      <span
+        className="sc-AxirZ jUXLfU"
       >
-        Dragonheart: Vengeance
-         
+        (
+        Дракон
+        )
+      </span>
+    </p>
+    <div>
+      <p
+        className="sc-AxmLO dgSOwn"
+      >
+        Lukas, a young farmer whose family is killed by savage raiders in the countryside, sets out on an epic quest for revenge, forming an unlikely trio with a majestic dragon and a swashbuckling, sword-fighting mercenary, Darius.
+      </p>
+      <p
+        className="sc-AxhUy sc-fzozJi iWFcxS"
+      >
         <span
-          className="sc-AxirZ jUXLfU"
+          className="sc-AxhCb iA-dFqF"
         >
-          (
-          Дракон
-          )
+          Fantasy
         </span>
       </p>
-      <div>
-        <p
-          className="sc-AxmLO dgSOwn"
+      <p
+        className="sc-Axmtr clcwvu"
+      >
+        <span
+          className="sc-AxgMl kvVMrz"
         >
-          Lukas, a young farmer whose family is killed by savage raiders in the countryside, sets out on an epic quest for revenge, forming an unlikely trio with a majestic dragon and a swashbuckling, sword-fighting mercenary, Darius.
-        </p>
-        <p
-          className="sc-AxhUy sc-fzozJi iWFcxS"
+          rating
+          : 
+        </span>
+         
+        <span
+          className="sc-AxheI fqiWrt"
         >
-          <span
-            className="sc-AxhCb iA-dFqF"
-          >
-            Fantasy
-          </span>
-        </p>
-        <p
-          className="sc-Axmtr clcwvu"
+          6.0
+        </span>
+      </p>
+      <p
+        className="sc-Axmtr clcwvu"
+      >
+        <span
+          className="sc-AxgMl kvVMrz"
         >
-          <span
-            className="sc-AxgMl kvVMrz"
-          >
-            Rating
-            : 
-          </span>
-           
-          <span
-            className="sc-AxheI fqiWrt"
-          >
-            6.0
-          </span>
-        </p>
-        <p
-          className="sc-Axmtr clcwvu"
+          release
+          : 
+        </span>
+         
+        <span
+          className="sc-AxheI fqiWrt"
         >
-          <span
-            className="sc-AxgMl kvVMrz"
-          >
-            Release year
-            : 
-          </span>
-           
-          <span
-            className="sc-AxheI fqiWrt"
-          >
-            2020
-          </span>
-        </p>
-        <p
-          className="sc-Axmtr clcwvu"
+          2020
+        </span>
+      </p>
+      <p
+        className="sc-Axmtr clcwvu"
+      >
+        <span
+          className="sc-AxgMl kvVMrz"
         >
-          <span
-            className="sc-AxgMl kvVMrz"
-          >
-            Runtime
-            : 
-          </span>
-           
-          <span
-            className="sc-AxheI fqiWrt"
-          >
-            1:37
-          </span>
-        </p>
-        <p
-          className="sc-Axmtr dShpiR"
+          runtime
+          : 
+        </span>
+         
+        <span
+          className="sc-AxheI fqiWrt"
         >
-          <span
-            className="sc-AxgMl kvVMrz"
-          >
-            Production
-            : 
-          </span>
-           
-          <span
-            className="sc-AxheI fqiWrt"
-          >
-            United States of America
-          </span>
-        </p>
-        <p
-          className="sc-Axmtr dShpiR"
+          1:37
+        </span>
+      </p>
+      <p
+        className="sc-Axmtr dShpiR"
+      >
+        <span
+          className="sc-AxgMl kvVMrz"
         >
-          <span
-            className="sc-AxgMl kvVMrz"
-          >
-            Budget
-            : 
-          </span>
-           
-          <span
-            className="sc-AxheI fqiWrt"
-          >
-            $15.0M
-          </span>
-        </p>
-        <p
-          className="sc-Axmtr dShpiR"
+          production
+          : 
+        </span>
+         
+        <span
+          className="sc-AxheI fqiWrt"
         >
-          <span
-            className="sc-AxgMl kvVMrz"
-          >
-            Revenue
-            : 
-          </span>
-           
-          <span
-            className="sc-AxheI fqiWrt"
-          >
-            $10.0M
-          </span>
-        </p>
-      </div>
+          United States of America
+        </span>
+      </p>
+      <p
+        className="sc-Axmtr dShpiR"
+      >
+        <span
+          className="sc-AxgMl kvVMrz"
+        >
+          budget
+          : 
+        </span>
+         
+        <span
+          className="sc-AxheI fqiWrt"
+        >
+          $15.0M
+        </span>
+      </p>
+      <p
+        className="sc-Axmtr dShpiR"
+      >
+        <span
+          className="sc-AxgMl kvVMrz"
+        >
+          revenue
+          : 
+        </span>
+         
+        <span
+          className="sc-AxheI fqiWrt"
+        >
+          $10.0M
+        </span>
+      </p>
     </div>
   </div>
 </div>

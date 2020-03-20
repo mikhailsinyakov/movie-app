@@ -16,5 +16,7 @@
   "notFoundPage": "Страница не найдена",
   "nowPlaying": "В кинотеатрах",
   "popular": "Популярные",
-  "topRated": "По рейтингу"
+  "topRated": "По рейтингу",
+  "search": "Поиск",
+  "typeMovieTitle": "Введите название фильма"
 }
