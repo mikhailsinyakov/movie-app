@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import styled from "styled-components";
 import { Times } from "@styled-icons/fa-solid/Times";
 import { useTranslation } from "react-i18next";
@@ -29,6 +29,7 @@ const Search = ({ className }) => {
   const {
     searchQuery, setSearchQuery, isSearchActive, setIsSearchActive
   } = useContext(HomeStateContext);
+  const inputEl = useRef(null);
   const wrapperStyle = {
     width: isSearchActive ? "60%" : "50px"
   };
@@ -39,9 +40,15 @@ const Search = ({ className }) => {
     display: searchQuery ? "inline" : "none"
   };
   
+  const clearSearchQuery = () => {
+    setSearchQuery("");
+    inputEl.current.focus();
+  };
+  
   return (
     <Wrapper style={wrapperStyle}>
       <input 
+        ref={inputEl}
         value={searchQuery}
         onChange={e => setSearchQuery(e.target.value)}
         placeholder={isSearchActive ? t("typeMovieTitle") : t("search")}
@@ -50,7 +57,7 @@ const Search = ({ className }) => {
         className={className}
         style={inputStyle}
       />
-      <ClearIcon style={clearIconStyle} onClick={() => setSearchQuery("")}>
+      <ClearIcon style={clearIconStyle} onClick={clearSearchQuery}>
         X
       </ClearIcon>
     </Wrapper>
