@@ -24,7 +24,10 @@ const ScrollRestoration = () => {
       window.addEventListener("scroll", handleScroll);
     };
 
-    if (pathname !== "/") return;
+    if (pathname !==  "/") {
+      window.scrollTo(0, 0);
+      return;
+    }
 
     if (scrollData.current[pathname]) {
       let count = 0;
