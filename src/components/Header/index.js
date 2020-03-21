@@ -35,6 +35,7 @@ const StyledHeader = styled(Header)`
   background-size: cover;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  z-index: 1;
 `;
 
 export default StyledHeader;

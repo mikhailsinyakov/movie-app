@@ -18,6 +18,7 @@ const StyledFooter = styled(Footer)`
   border-radius: 0.5rem;
   text-align: center;
   font-size: 0.8rem;
+  z-index: 1;
 `;
 
 export default StyledFooter;

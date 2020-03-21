@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Poster from "shared/Poster";
@@ -8,28 +8,54 @@ const StyledPoster = styled(Poster)`
   align-self: flex-start;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  width: 150px;
   
   @media screen and (min-width: 600px) {
     position: fixed;
+    left: calc((100vw - 600px) * 0.6 + 25px);
+  }
+  
+  @media screen and (min-height: 400px) {
+    width: 200px;
     left: calc((100vw - 600px) * 0.6);
   }
 
   @media screen and (min-width: 700px) {
     left: calc((100vw - 700px) * 0.3 + 60px);
+  }
+  
+  @media screen and (min-width: 700px) and (min-height: 500px) {
     width: 250px;
   }
 `;
 
-const Details = ({ details, className }) => (
-  <div className={className}>
-    <StyledPoster 
-      source={details.poster_src} 
-      title={details.title} 
-      key={details.poster_src}
-     />
-    <Info {...details} />
-  </div>
-);
+const Details = ({ details, className }) => {
+  const posterEl = useRef();
+  const initPosterPos = useRef(0);
+  
+  useEffect(() => {
+    initPosterPos.current = posterEl.current.getBoundingClientRect().top;
+    const handleScroll = () => {
+      const currScroll = window.scrollY;
+      const diff = initPosterPos.current - currScroll;
+      if (diff >= 0) posterEl.current.style.top = diff + 10 + "px";
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className={className}>
+      <StyledPoster 
+        source={details.poster_src} 
+        title={details.title} 
+        key={details.poster_src}
+        ref={posterEl}
+       />
+      <Info {...details} />
+    </div>
+  );
+}
 
 Details.propTypes = {
   details: PropTypes.shape({
