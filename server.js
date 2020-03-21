@@ -12,7 +12,8 @@ const corsOptions = {
 const app = express();
 app.use(cors(corsOptions));
 app.use((err, req, res, next) => {
-  if (err) res.status(500).json({ error: err });
+  console.log(err);
+  if (err) res.status(500).send({ error: err });
   else next();
 });
 app.use(bodyParser.json());
@@ -34,8 +35,11 @@ app.get("/api/movie/:movieId", async (req, res) => {
   const { movieId } = req.params;
   const { language } = req.query;
   try {
-    const movieDetails = await movieAPI.getMovieDetails(movieId, language);
-    res.send(movieDetails);
+    const [movieDetails, actors] = await Promise.all([
+      movieAPI.getMovieDetails(movieId, language),
+      movieAPI.getMovieActors(movieId)
+    ]);
+    res.send({...movieDetails, actors});
   }
   catch (e) {
     res.status(500).send(e);
@@ -60,7 +64,5 @@ app.get("*", (req, res) => {
 app.all("*", (req, res) => {
   res.status(404).send({error: "The operation is not supported"});
 });
-
-
 
 app.listen(process.env.PORT || 8080);

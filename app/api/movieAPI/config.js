@@ -11,8 +11,8 @@ const getGenresObj = genresData =>
     {}
   );
 
-const definePosterSize = (posterSizes, width) => {
-  return posterSizes.find(size => +size.slice(1) >= width);
+const defineImageSize = (imageSizes, side) => {
+  return imageSizes.find(size => +size.slice(1) >= side);
 };
 
 const getConfigFromAPI = async () => {
@@ -26,11 +26,13 @@ const getConfigFromAPI = async () => {
       async (path) => await request(path) )
   );
   
-  const posterSize = definePosterSize(configData.images.poster_sizes, 300);
+  const posterSize = defineImageSize(configData.images.poster_sizes, 300);
+  const profileSize = defineImageSize(configData.images.profile_sizes, 100);
 
   return {
     imageBaseUrl: configData.images.secure_base_url,
     posterSize,
+    profileSize,
     genres: {
       en: getGenresObj(genresDataEn),
       ru: getGenresObj(genresDataRu)

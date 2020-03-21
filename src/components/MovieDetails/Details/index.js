@@ -4,19 +4,25 @@ import styled from "styled-components";
 import Poster from "shared/Poster";
 import Info from "./Info";
 
-const PosterWithAddStyles = styled(Poster)`
+const StyledPoster = styled(Poster)`
   align-self: flex-start;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  
+  @media screen and (min-width: 600px) {
+    position: fixed;
+    left: calc((100vw - 600px) * 0.6);
+  }
 
   @media screen and (min-width: 700px) {
+    left: calc((100vw - 700px) * 0.3 + 60px);
     width: 250px;
   }
 `;
 
 const Details = ({ details, className }) => (
   <div className={className}>
-    <PosterWithAddStyles 
+    <StyledPoster 
       source={details.poster_src} 
       title={details.title} 
       key={details.poster_src}
@@ -46,6 +52,15 @@ const StyledDetails = styled(Details)`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1rem;
+  
+  @media screen and (min-width: 600px) {
+    margin-left: calc((100vw - 600px) * 0.6 + 200px);
+    justify-content: flex-start;
+  }
+  
+  @media screen and (min-width: 700px) {
+    margin-left: calc((100vw - 700px) * 0.3 + 310px);
+  }
 `;
 
 export default StyledDetails;

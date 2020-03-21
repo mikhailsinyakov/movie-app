@@ -3,7 +3,11 @@ const https = require("https");
 const getRegion = lang => (lang === "en" ? "US" : "RU");
 
 module.exports = (pathname, language) => {
-  const path = `/3${pathname}&region=${language ? getRegion(language) : "US"}`;
+  const firstSymbol = pathname.match(/\?/) ? "&" : "?";
+  const regionParam = language ? 
+    `${firstSymbol}region=${language ? getRegion(language) : "US"}` :
+    null;
+  const path = `/3${pathname}${regionParam ? regionParam : ""}`;
   
   const options = {
     hostname: 'api.themoviedb.org',

@@ -22,6 +22,7 @@ const Info = ({
   runtime,
   budget,
   revenue,
+  actors,
   className
 }) => (
   <div className={className}>
@@ -37,6 +38,7 @@ const Info = ({
       }
       budget={budget ? "$" + (budget / 1000000).toFixed(1) + "M" : ""}
       revenue={revenue ? "$" + (revenue / 1000000).toFixed(1) + "M" : ""}
+      actors={actors}
     />
   </div>
 );
@@ -49,7 +51,10 @@ Info.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   release_date: PropTypes.string.isRequired,
   production_countries: PropTypes.arrayOf(PropTypes.string).isRequired,
-  runtime: PropTypes.number
+  runtime: PropTypes.number,
+  budget: PropTypes.number,
+  revenue: PropTypes.number,
+  actors: PropTypes.array.isRequired,
 };
 
 const StyledInfo = styled(Info)`

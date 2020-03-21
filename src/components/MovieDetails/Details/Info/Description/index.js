@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Genres from "shared/Genres";
 import Item from "./Item";
+import Actors from "./Actors";
 
 const Overview = styled.p`
   text-indent: 1rem;
@@ -29,7 +30,8 @@ const Description = ({
   runtime,
   production,
   budget,
-  revenue
+  revenue,
+  actors
 }) => (
   <div>
     {overview && <Overview>{overview}</Overview>}
@@ -40,6 +42,7 @@ const Description = ({
     <Item name="production" value={production} />
     <Item name="budget" value={budget} />
     <Item name="revenue" value={revenue} />
+    <Actors actors={actors} />
   </div>
 );
 
@@ -51,7 +54,12 @@ Description.propTypes = {
   runtime: PropTypes.string,
   production: PropTypes.string,
   budget: PropTypes.string,
-  revenue: PropTypes.string
+  revenue: PropTypes.string,
+  actors: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    profile_src: PropTypes.string,
+    name: PropTypes.string
+  })).isRequired
 };
 
 export default Description;

@@ -8,6 +8,9 @@ cache.init();
 const getPosterSrc = (config, posterPath) =>
   `${config.imageBaseUrl}${config.posterSize}${posterPath}`;
   
+const getProfileSrc = (config, profilePath) =>
+  `${config.imageBaseUrl}${config.profileSize}${profilePath}`;
+  
 const changeResults = (results, currConfig, language) => {
   return results.map(movie => ({
     ...movie,
@@ -49,6 +52,22 @@ exports.getMovieDetails = async (movieId, language = "en") => {
     )
   };
 };
+
+exports.getMovieActors = async movieId => {
+  const currConfig = config.get();
+  const path = `/movie/${movieId}/credits`;
+  let credits = cache.get(path);
+  if (!credits) {
+    credits = await request(path);
+    cache.set(path, credits);
+  }
+  const actors = credits.cast.filter((_, i) => i < 6);
+  return actors.map(actor => ({
+    ...actor,
+    profile_src: 
+      actor.profile_path && getProfileSrc(currConfig, actor.profile_path)
+  }));
+}
 
 exports.getMoviesListBySearch = async (query, page = 1, language = "en") => {
   const currConfig = config.get();

@@ -18,5 +18,6 @@
   "popular": "Популярные",
   "topRated": "По рейтингу",
   "search": "Поиск",
-  "typeMovieTitle": "Введите название фильма"
+  "typeMovieTitle": "Введите название фильма",
+  "actors": "Актеры"
 }
