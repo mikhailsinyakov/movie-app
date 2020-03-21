@@ -1,10 +1,20 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const movieAPI = require("./app/api/movieAPI");
 require("dotenv").config();
 
+const corsOptions = {
+  origin: process.env.ORIGIN
+};
+
 const app = express();
+app.use(cors(corsOptions));
+app.use((err, req, res, next) => {
+  if (err) res.status(500).json({ error: err });
+  else next();
+});
 app.use(bodyParser.json());
 
 app.get("/api/movies/:category", async (req, res) => {
@@ -47,7 +57,9 @@ app.use(express.static(path.join(__dirname, "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
-
+app.all("*", (req, res) => {
+  res.status(404).send({error: "The operation is not supported"});
+});
 
 
 
