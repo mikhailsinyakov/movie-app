@@ -64,7 +64,7 @@ const StyledInfo = styled(Info)`
   margin: 1rem;
   border-radius: 0.5rem;
 
-  @media screen and (min-width: 550px) {
+  @media screen and (min-width: 600px) {
     & {
       width: 250px;
       margin-top: 0;

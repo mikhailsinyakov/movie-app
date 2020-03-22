@@ -33,7 +33,7 @@ const Details = ({ details, className }) => {
         clearTimeout(timer.current);
       }
       timer.current = setTimeout(() => {
-        if (window.innerWidth > 550) {
+        if (window.innerWidth > 600) {
           const currScroll = window.scrollY;
           const diff = currScroll - initPosterPos.current + 10;
           posterEl.current.style.transform = 

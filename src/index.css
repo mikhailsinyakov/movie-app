@@ -12,31 +12,27 @@ body {
 }
 
 body {
+  font-family: "PT Sans", sans-serif;
+  overflow-y: scroll;
+  position: relative;
+}
+
+body::before {
+  content: ' ';
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   background-image: url(/img/background.jpg);
-  background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  font-family: "PT Sans", sans-serif;
+  will-change: transform;
+  z-index: -1;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* for smartphones, touchscreens */
-@media (hover: none) and (pointer: coarse) {
-  body {
-    height: 100vh;
-    overflow: scroll;
-  }
-}
-
-/* for stylus-based screens */
-@media (hover: none) and (pointer: fine) {
-  body {
-    height: 100vh;
-    overflow: scroll;
-  }
 }
