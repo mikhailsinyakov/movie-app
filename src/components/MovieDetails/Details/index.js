@@ -9,19 +9,11 @@ const StyledPoster = styled(Poster)`
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   width: 150px;
+  will-change: transform;
+  transition: transform 0.2s;
   
-  @media screen and (min-width: 600px) {
-    position: fixed;
-    left: calc((100vw - 600px) * 0.6 + 25px);
-  }
-  
-  @media screen and (min-height: 400px) {
+  @media screen and (min-height: 400px) and (min-width: 550px) {
     width: 200px;
-    left: calc((100vw - 600px) * 0.6);
-  }
-
-  @media screen and (min-width: 700px) {
-    left: calc((100vw - 700px) * 0.3 + 60px);
   }
   
   @media screen and (min-width: 700px) and (min-height: 500px) {
@@ -32,16 +24,35 @@ const StyledPoster = styled(Poster)`
 const Details = ({ details, className }) => {
   const posterEl = useRef();
   const initPosterPos = useRef(0);
+  const timer = useRef(null);
   
   useEffect(() => {
     initPosterPos.current = posterEl.current.getBoundingClientRect().top;
     const handleScroll = () => {
-      const currScroll = window.scrollY;
-      const diff = initPosterPos.current - currScroll;
-      if (diff >= 0) posterEl.current.style.top = diff + 10 + "px";
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      timer.current = setTimeout(() => {
+        if (window.innerWidth > 550) {
+          const currScroll = window.scrollY;
+          const diff = currScroll - initPosterPos.current + 10;
+          posterEl.current.style.transform = 
+            `translateY(${Math.max(10, diff) + "px"})`;
+        } else {
+          posterEl.current.style.transform = "translateY(0)";
+        }
+        timer.current = null;
+      }, 100);
+      
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("orientationchange", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("orientationchange", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   return (
@@ -78,15 +89,6 @@ const StyledDetails = styled(Details)`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 1rem;
-  
-  @media screen and (min-width: 600px) {
-    margin-left: calc((100vw - 600px) * 0.6 + 200px);
-    justify-content: flex-start;
-  }
-  
-  @media screen and (min-width: 700px) {
-    margin-left: calc((100vw - 700px) * 0.3 + 310px);
-  }
 `;
 
 export default StyledDetails;
