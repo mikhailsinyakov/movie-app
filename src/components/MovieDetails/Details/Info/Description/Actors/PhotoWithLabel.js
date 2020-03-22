@@ -25,7 +25,7 @@ const PhotoWithLabel = ({id, name, photoSrc, className}) => (
 PhotoWithLabel.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  photoSrc: PropTypes.string.isRequired
+  photoSrc: PropTypes.string
 };
 
 const StyledPhotoWithLabel = styled(PhotoWithLabel)`

@@ -10,7 +10,7 @@ const StyledPoster = styled(Poster)`
   border-bottom-right-radius: 1rem;
   width: 150px;
   will-change: transform;
-  transition: transform 0.2s;
+  transition: transform 2s;
   
   @media screen and (min-height: 400px) and (min-width: 550px) {
     width: 200px;
