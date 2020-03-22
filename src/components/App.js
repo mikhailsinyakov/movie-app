@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import ScrollRestoration from "./ScrollRestoration";
 import HomeScreen from "screens/Home";
 import MovieScreen from "screens/Movie";
+import ActorScreen from "screens/Actor";
 import NotFoundScreen from "screens/NotFound";
 import { getMoviesList, getMoviesListBySearch } from "api/movieAPI";
 import { withHomeStateContext, HomeStateContext } from "./HomeState";
@@ -68,6 +69,9 @@ const App = () => {
         </Route>
         <Route path="/movie/:id">
           <MovieScreen />
+        </Route>
+        <Route path="/actor/:id">
+          <ActorScreen />
         </Route>
         <Route>
           <NotFoundScreen />

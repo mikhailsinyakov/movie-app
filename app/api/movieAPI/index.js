@@ -83,3 +83,19 @@ exports.getMoviesListBySearch = async (query, page = 1, language = "en") => {
     results: changeResults(list.results, currConfig, language)
   };
 };
+
+exports.getActorDetails = async (actorId, language = "en") => {
+  const currConfig = config.get();
+  const path = `/person/${actorId}?language=${language}`;
+  let details = cache.get(path);
+  if (!details) {
+    details = await request(path);
+    cache.set(path, details);
+  }
+  
+  return {
+    ...details,
+    profile_src: 
+      details.profile_path && getProfileSrc(currConfig, details.profile_path)
+  };
+};

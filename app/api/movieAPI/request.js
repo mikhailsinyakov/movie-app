@@ -8,7 +8,6 @@ module.exports = (pathname, language) => {
     `${firstSymbol}region=${language ? getRegion(language) : "US"}` :
     null;
   const path = `/3${pathname}${regionParam ? regionParam : ""}`;
-  
   const options = {
     hostname: 'api.themoviedb.org',
     path,
@@ -22,8 +21,11 @@ module.exports = (pathname, language) => {
     let data = "";
   
     const req = https.request(options, res => {
+      status = res.statusCode;
       res.on("data", chunk => (data += chunk));
-      res.on("end", () => resolve(JSON.parse(data)));
+      res.on("end", () => {
+        status === 200 ? resolve(JSON.parse(data)) : reject(JSON.parse(data))
+      });
     });
     
     req.on("error", reject);

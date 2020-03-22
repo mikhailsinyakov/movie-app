@@ -19,5 +19,7 @@
   "topRated": "Top rated",
   "search": "Search",
   "typeMovieTitle": "Type a movie title",
-  "actors": "Actors"
+  "actors": "Actors",
+  "birthday": "Birthday",
+  "place_of_birth": "Place of birth"
 }

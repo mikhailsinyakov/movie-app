@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Poster = React.forwardRef(({ source, title, className }, ref) => (
+const Poster = React.forwardRef(({ source, alt, className }, ref) => (
   <img
     src="img/poster-placeholder.png"
-    alt={title}
+    alt={alt}
     onError={e => (e.target.src = "img/poster-placeholder.png")}
     onLoad={e => source && e.target.src !== source && (e.target.src = source)}
     ref={ref}
@@ -15,7 +15,7 @@ const Poster = React.forwardRef(({ source, title, className }, ref) => (
 
 Poster.propTypes = {
   source: PropTypes.string,
-  title: PropTypes.string.isRequired
+  alt: PropTypes.string.isRequired
 };
 
 const StyledPoster = styled(Poster)`

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import withInfoStyles from "hocs/withInfoStyles";
 import Title from "./Title";
 import Description from "./Description";
 
@@ -54,32 +54,7 @@ Info.propTypes = {
   runtime: PropTypes.number,
   budget: PropTypes.number,
   revenue: PropTypes.number,
-  actors: PropTypes.array.isRequired,
+  actors: PropTypes.array.isRequired
 };
 
-const StyledInfo = styled(Info)`
-  max-width: 330px;
-  background-color: rgba(226, 243, 187, 0.7);
-  padding: 1rem;
-  margin: 1rem;
-  border-radius: 0.5rem;
-
-  @media screen and (min-width: 600px) {
-    & {
-      width: 250px;
-      margin-top: 0;
-      margin-left: 2rem;
-      margin-right: 2rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
-  }
-
-  @media screen and (min-width: 800px) {
-    & {
-      width: 600px;
-    }
-  }
-`;
-
-export default StyledInfo;
+export default withInfoStyles(Info);

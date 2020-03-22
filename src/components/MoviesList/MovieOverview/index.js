@@ -15,7 +15,7 @@ const MovieOverview = ({ movie, className }) => {
     >
       <Poster 
         source={movie.poster_src} 
-        title={movie.title} 
+        alt={movie.title} 
         key={movie.poster_src} 
        />
       <Info

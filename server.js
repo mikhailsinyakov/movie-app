@@ -57,6 +57,18 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
+app.get("/api/actor/:actorId", async (req, res) => {
+  const { actorId } = req.params;
+  const { language } = req.query;
+  try {
+    const actorDetails = await movieAPI.getActorDetails(actorId, language);
+    res.send(actorDetails);
+  } 
+  catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 app.use(express.static(path.join(__dirname, "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));

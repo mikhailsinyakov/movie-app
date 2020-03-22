@@ -39,3 +39,14 @@ export const getMoviesListBySearch = async (
   });
   return response.data;
 };
+
+export const getActorDetails = async ({ language, actorId }) => {
+  const path = `/api/actor/${actorId}`;
+  const response = await axios({
+    url: path,
+    params: {
+      language
+    }
+  });
+  return response.data;
+};

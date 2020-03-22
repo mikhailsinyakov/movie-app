@@ -27,7 +27,7 @@ const getConfigFromAPI = async () => {
   );
   
   const posterSize = defineImageSize(configData.images.poster_sizes, 300);
-  const profileSize = defineImageSize(configData.images.profile_sizes, 100);
+  const profileSize = defineImageSize(configData.images.profile_sizes, 300);
 
   return {
     imageBaseUrl: configData.images.secure_base_url,

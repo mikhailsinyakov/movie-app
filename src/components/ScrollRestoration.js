@@ -23,11 +23,12 @@ const ScrollRestoration = () => {
       interval.current = null;
       window.addEventListener("scroll", handleScroll);
     };
-
-    if (pathname !==  "/") {
-      window.scrollTo(0, 0);
-      return;
-    }
+    
+    const handleLoad = () => {
+      setTimeout(() => window.scrollTo(0, 0), 0);
+      window.removeEventListener("load", handleLoad);
+      window.addEventListener("scroll", handleScroll);
+    };
 
     if (scrollData.current[pathname]) {
       let count = 0;
@@ -36,13 +37,14 @@ const ScrollRestoration = () => {
         else {
           const pageHeight = window.document.documentElement.scrollHeight;
           if (pageHeight === scrollData.current[pathname].pageHeight) {
-            window.scrollTo(0, scrollData.current[pathname].scrollPos);
+            if (pathname !==  "/") window.scrollTo(0, 0);
+            else window.scrollTo(0, scrollData.current[pathname].scrollPos);
             endCheckingPage();
           }
         }
       }, 100);
     } else {
-      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("load", handleLoad);
     }
 
     return () => {

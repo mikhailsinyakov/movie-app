@@ -19,5 +19,7 @@
   "topRated": "По рейтингу",
   "search": "Поиск",
   "typeMovieTitle": "Введите название фильма",
-  "actors": "Актеры"
+  "actors": "Актеры",
+  "birthday": "Дата рождения",
+  "place_of_birth": "Место рождения"
 }
