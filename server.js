@@ -4,10 +4,14 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const movieAPI = require("./app/api/movieAPI");
 require("dotenv").config();
+const db = require("./app/db");
+const addAuthKey = require("./app/api/addAuthKey");
 
 const corsOptions = {
   origin: process.env.ORIGIN
 };
+
+db.connect().catch(console.log)
 
 const app = express();
 app.use(cors(corsOptions));
@@ -26,7 +30,6 @@ app.get("/api/movies/:category", async (req, res) => {
     res.send(moviesList);
   } 
   catch (e) {
-    console.log(e);
     res.status(500).send(e);
   }
 });
@@ -65,6 +68,49 @@ app.get("/api/actor/:actorId", async (req, res) => {
     res.send(actorDetails);
   } 
   catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.post("/api/authKey", async (req, res) => {
+  try {
+    const authKey = await addAuthKey();
+    res.send({authKey});
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.get("/api/wishlist", async (req, res) => {
+  const { authKey } = req.query;
+  try {
+    const wishlist = await db.getUserMovies(authKey);
+    res.send({wishlist});
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.put("/api/wishlist/:movieId", async (req, res) => {
+  const { authKey } = req.query;
+  const { movieId } = req.params;
+  try {
+    const success = await db.addMovieToWishList(authKey, movieId);
+    if (success) res.status(200).send();
+    else res.status(401).send();
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
+app.delete("/api/wishlist/:movieId", async (req, res) => {
+  const { authKey } = req.query;
+  const { movieId } = req.params;
+  try {
+    const success = await db.deleteMovieFromWishList(authKey, movieId);
+    if (success) res.status(200).send();
+    else res.status(401).send();
+  } catch (e) {
     res.status(500).send(e);
   }
 });
