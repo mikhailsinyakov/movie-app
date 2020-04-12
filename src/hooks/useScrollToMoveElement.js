@@ -15,9 +15,11 @@ export default element => {
         if (window.innerWidth > 600) {
           const currScroll = window.scrollY;
           const diff = currScroll - initElementPos.current + 10;
-          element.current.style.transform = 
+          if (element.current) {
+            element.current.style.transform = 
             `translateY(${Math.max(10, diff) + "px"})`;
-        } else {
+          }
+        } else if (element.current) { 
           element.current.style.transform = "translateY(0)";
         }
         timer.current = null;

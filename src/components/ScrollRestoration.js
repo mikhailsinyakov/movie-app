@@ -1,64 +1,81 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
+
+const handleLoad = () => {
+  setTimeout(() => window.scrollTo(0, 0), 0);
+  window.removeEventListener("load", handleLoad);
+};
+  
+const waitForPageToLoad = pageHeight => {
+  const maxIterations = 30;
+  let iteration = 0;
+  return new Promise(resolve => {
+    const interval = setInterval(() => {
+      const currPageHeight = window.document.documentElement.scrollHeight;
+      if (pageHeight === currPageHeight || ++iteration === maxIterations) {
+        clearInterval(interval);
+        resolve();
+      }
+    }, 100);
+  });
+};
 
 const ScrollRestoration = () => {
   const { pathname } = useLocation();
+  const prevLocation = useRef(null);
   const scrollData = useRef({});
   const timer = useRef(null);
-  const interval = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (timer.current) clearTimeout(timer.current);
-      timer.current = setTimeout(() => {
-        scrollData.current[pathname] = {
-          scrollPos: window.pageYOffset,
-          pageHeight: window.document.documentElement.scrollHeight
-        };
-        timer.current = null;
-      }, 200);
-    };
-    const endCheckingPage = () => {
-      clearInterval(interval.current);
-      interval.current = null;
-      window.addEventListener("scroll", handleScroll);
-    };
-    
-    const handleLoad = () => {
-      setTimeout(() => window.scrollTo(0, 0), 0);
-      window.removeEventListener("load", handleLoad);
-      window.addEventListener("scroll", handleScroll);
-    };
-
-    if (scrollData.current[pathname]) {
-      let count = 0;
-      interval.current = setInterval(() => {
-        if (count++ > 9) endCheckingPage();
-        else {
-          const pageHeight = window.document.documentElement.scrollHeight;
-          if (pageHeight === scrollData.current[pathname].pageHeight) {
-            if (pathname !==  "/") window.scrollTo(0, 0);
-            else window.scrollTo(0, scrollData.current[pathname].scrollPos);
-            endCheckingPage();
-          }
-        }
-      }, 100);
-    } else {
+  
+  const applyScrollPos = useCallback(async () => {
+    // If it is first page to load, scroll page to top
+    if (!Object.keys(scrollData.current).length) {
       window.addEventListener("load", handleLoad);
+    } 
+    // If the page has been saved
+    if (scrollData.current[pathname]) {
+      const { pageHeight, scrollPos } = scrollData.current[pathname];
+      let scrollYTo;
+      if (pathname === "/" || 
+        (pathname.match(/^\/movie\/\d+$/) && 
+        prevLocation.current.match(/^\/actor\/\d+$/))) {
+        scrollYTo = scrollPos;
+      } else scrollYTo = 0;
+      await waitForPageToLoad(pageHeight);
+      window.scrollTo(0, scrollYTo);
+    } else {
+      setTimeout(() => window.scrollTo(0, 0), 1000);
     }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (timer.current) {
-        clearTimeout(timer.current);
-        timer.current = null;
-      }
-      if (interval.current) {
-        clearInterval(interval.current);
-        interval.current = null;
-      }
-    };
   }, [pathname]);
+  
+  const handleScroll = useCallback(() => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      scrollData.current[pathname] = {
+        scrollPos: window.pageYOffset,
+        pageHeight: window.document.documentElement.scrollHeight
+      };
+      timer.current = null;
+    }, 200);
+  }, [pathname]);
+  
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+  
+  useEffect(() => {
+    (async () => {
+      await applyScrollPos();
+      window.addEventListener("scroll", handleScroll);
+    })();
+    
+    return () => {
+      prevLocation.current = pathname;
+      window.removeEventListener("scroll", handleScroll);
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, [pathname, applyScrollPos, handleScroll]);
 
   return null;
 };

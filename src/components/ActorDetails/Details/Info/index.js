@@ -30,7 +30,7 @@ const Info = ({
       <StyledName>{name}</StyledName>
       <Description
         biography={biography}
-        birthday={formatDate(birthday, language)}
+        birthday={birthday && formatDate(birthday, language)}
         place_of_birth={place_of_birth}
       />
     </div>
