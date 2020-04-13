@@ -57,9 +57,7 @@ const Search = ({ className }) => {
         className={className}
         style={inputStyle}
       />
-      <ClearIcon style={clearIconStyle} onClick={clearSearchQuery}>
-        X
-      </ClearIcon>
+      <ClearIcon style={clearIconStyle} onClick={clearSearchQuery}/>
     </Wrapper>
   )
 };

@@ -15,7 +15,8 @@ const Settings = ({ className }) => {
   const categoryOptions = [
     { value: "now_playing", name: t("nowPlaying") },
     { value: "popular", name: t("popular") },
-    { value: "top_rated", name: t("topRated") }
+    { value: "top_rated", name: t("topRated") },
+    { value: "wishlist", name: t("wishlist")}
   ];
 
   return (

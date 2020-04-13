@@ -21,5 +21,8 @@
   "typeMovieTitle": "Введите название фильма",
   "actors": "Актеры",
   "birthday": "Дата рождения",
-  "place_of_birth": "Место рождения"
+  "place_of_birth": "Место рождения",
+  "addMovie": "Сохранить",
+  "movieWasAdded": "Сохранено",
+  "wishlist": "Сохраненные"
 }

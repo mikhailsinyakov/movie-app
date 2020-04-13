@@ -21,5 +21,8 @@
   "typeMovieTitle": "Type a movie title",
   "actors": "Actors",
   "birthday": "Birthday",
-  "place_of_birth": "Place of birth"
+  "place_of_birth": "Place of birth",
+  "addMovie": "Add to your wishlist",
+  "movieWasAdded": "Added to your wishlist",
+  "wishlist": "Wishlist"
 }

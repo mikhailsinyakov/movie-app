@@ -6,6 +6,7 @@ import HomeScreen from "screens/Home";
 import MovieScreen from "screens/Movie";
 import ActorScreen from "screens/Actor";
 import NotFoundScreen from "screens/NotFound";
+import { addAuthKey } from "api/auth";
 import { getMoviesList, getMoviesListBySearch } from "api/movieAPI";
 import { withHomeStateContext, HomeStateContext } from "./HomeState";
 
@@ -25,6 +26,14 @@ const App = () => {
       cb();
       timer.current = null;
     }, 300);
+  }, []);
+  
+  useEffect(() => {
+    if (!window.localStorage.getItem("authKey")) {
+      addAuthKey()
+        .then(authKey => window.localStorage.setItem("authKey", authKey))
+        .catch(console.error);
+    }
   }, []);
   
   useEffect(() => { 
